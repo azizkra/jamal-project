@@ -43,9 +43,9 @@
     </table>
   </div>
 
-  <form action="{% url 'payment:process' %}" method="post" class="text-center mt-4">
+  <form action="{% url 'payment:process' %}" method="post" class="text-right mt-4">
     {% csrf_token %}
-    <input type="submit" class="btn-main w-100 w-md-auto" value="{% trans 'Pay Now' %}">
+    <input type="submit" class="btn-main w-40 w-md-auto" value="{% trans 'Pay Now' %}">
   </form>
 </section>
 
