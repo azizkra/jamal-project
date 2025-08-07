@@ -21,19 +21,20 @@
       </thead>
       <tbody>
         {% for item in order.items.all %}
-        <tr>
-          <td>
-            <img class="rounded-2" width="70" height="70" src="{% if item.product.image_1 %}
-                            {{ item.product.image_1.url }}
-                        {% else %}
-                            {% static 'img/no_image.png' %}
-                        {% endif %}" alt="product">
-          </td>
-          <td>{{ item.product.name }}</td>
-          <td class="text-muted fs-small px-0">${{ item.price }}</td>
-          <td class="text-muted fs-small px-0">{{ item.quantity }}</td>
-          <td class="text-muted fs-small px-0">${{ item.get_cost }}</td>
-        </tr>
+          <tr>
+            <td>
+              <img class="rounded-2" width="70" height="70" src="{% if item.product.image_1 %}
+                              {{ item.product.image_1.url }}
+                          {% else %}
+                              {% static 'img/no_image.png' %}
+                          {% endif %}" alt="product">
+            </td>
+            <td>{{ item.product.name }}</td>
+            <td class="text-muted fs-small px-0">${{ item.price }}</td>
+            <td class="text-muted fs-small px-0">{{ item.quantity }}</td>
+            
+            <td class="text-muted fs-small px-0">${{ item.get_cost }}</td>
+          </tr>
         {% endfor %}
         <tr class="total">
           <td colspan="4" class="text-muted fs-small px-0 text-end">{% trans 'Total' %}</td>
