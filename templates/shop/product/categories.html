@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Shop By Category
+{% endblock title %}
+
+
+{% block content %}
+    <section>
+        <h3 class="my-4 fw-semibold">Shop by Category</h3>
+        <ul class="m-0 p-0 list-unstyled d-flex gap-3 flex-wrap">
+            {% for c in categories %}
+                <li {% if category.slug == c.slug %}class="selected"{% endif %}class="h-100">
+                    <a href="{{ c.get_absolute_url }}"  class="border p-3 d-flex gap-3 rounded-2 align-items-center text-decoration-none fw-semibold text-dark">
+                        <img src="{{ c.image_1.url }}" width="40" height="40" class="rounded-3" alt="{{ c.name }}">
+                        <span>{{ c.name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock content %}

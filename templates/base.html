@@ -1,0 +1,196 @@
+{% load i18n %}
+{% load static %}
+ <!DOCTYPE html>
+ <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <!-- Base CSS -->
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base_new.css' %}" rel="stylesheet">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Page Title -->
+    <title>{% block title %}{% trans 'My shop' %}{% endblock %}</title>
+    <style>
+        /* Style to make the button look like a link */
+    
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg border-bottom px-md-4">
+            <div class="container-fluid">
+                <a class="navbar-brand me-5" href="/">
+                    <img class="me-2" src="{% static 'images/logo/logo.png' %}" alt="logo">
+                    <span class="fw-semibold">{% trans 'Jammal Gold' %}</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-3">
+                        <li class="nav-item">
+                            <a class="fs-small fw-medium nav-link active" aria-current="page" href="#">{% trans 'Home' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-small fw-medium nav-link" href="#">{% trans 'Shop' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-small fw-medium nav-link" href="{% url 'shop:about' %}">{% trans 'About' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="fs-small fw-medium nav-link" href="{% url 'shop:contact' %}">{% trans 'Contact' %}</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-4">
+                        <form class="position-relative" role="search" action="{% url 'shop:product_search' %}" method="get">
+                            <input class="form-control me-2 input-search bg-grey-lighter" type="search" name="q" placeholder="Search" aria-label="Search" />
+                            <button class="btn-search" type="submit"><img src="{% static 'images/icons/search.svg' %}" alt="search"></button>
+                        </form>
+                        <div class="ms-auto d-flex gap-2">
+                            <!-- Dropdown for language selection -->
+                            
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+
+                            <div class="dropdown">
+                                <button class="btn btn-icon dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    🌐
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                                    {% for language in languages %}
+                                        <li>
+                                            <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                                                <input name="language" type="hidden" value="{{ language.code }}">
+                                                <button type="submit" class="dropdown-item {% if language.code == LANGUAGE_CODE %} active {% endif %}">
+                                                    {{ language.name_local }}
+                                                </button>
+                                            </form>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <a href="{% url 'cart:cart_detail' %}" class="btn btn-icon"><img src="{% static 'images/icons/cart.svg' %}" alt="cart"></a>
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'images/users/user1.png' %}" class="rounded-pill" width="40" height="40" alt="User">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="userDropdown">
+
+                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_vendor %}
+                                    <li><a class="dropdown-item" href="{% url 'account:vendor_profile' %}">البروفايل (تاجر)</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'account:customer_profile' %}">البروفايل (زبون)</a></li>
+                                {% endif %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" action="{% url 'account:account_logout' %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
+                                                <i class="bi bi-box-arrow-right"></i> تسجيل الخروج
+                                            </button>
+                                        </form>
+                                    </li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'account:login' %}">تسجيل الدخول</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'account:register' %}">إنشاء حساب</a></li>
+                            {% endif %}
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+        {% if messages %}
+            <div class="container mt-3">
+                <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+                        {{ message|safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        {% endif %}
+
+
+        
+    
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer class="container text-center pt-5 pb-3">
+        <ul class="d-flex justify-content-between m-0 px-md-4 mt-3 list-unstyled">
+            <li>
+                <a class="text-muted text-decoration-none" href="{% url 'shop:privacy_policy' %}">{% trans 'Privacy Policy' %}</a>
+            </li>
+            <li>
+                <a class="text-muted text-decoration-none" href="{% url 'shop:trems' %}">{% trans 'Terms of Service' %}</a>
+            </li>
+            <li>
+                <a class="text-muted text-decoration-none" href="{% url 'shop:contact' %}">{% trans 'Contact Us' %}</a>
+            </li>
+        </ul>
+        <ul class="d-flex justify-content-center gap-3 py-4 m-0 list-unstyled">
+            <li>
+                <a class="text-muted text-decoration-none" href="#">
+                    <img src="{% static 'images/icons/twitter.svg' %}" alt="twitter">
+                </a>
+            </li>
+            <li>
+                <a class="text-muted text-decoration-none" href="#">
+                    <img src="{% static 'images/icons/insta.svg' %}" alt="instagram">
+                </a>
+            </li>
+            <li>
+                <a class="text-muted text-decoration-none" href="#">
+                    <img src="{% static 'images/icons/facebook.svg' %}" alt="facebook">
+                </a>
+            </li>
+        </ul>
+        
+        <p class="text-muted">{% trans '@2025 Trendify. All rights reserved' %}.</p>
+    </footer>
+    <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        // Fade-out تلقائي بعد 5 ثوانٍ
+        setTimeout(function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+            alert.classList.remove('show');
+            alert.classList.add('fade');
+            setTimeout(() => {
+                if (alert.parentNode) alert.remove();
+            }, 500); // مهلة لتأثير الإخفاء
+            });
+        }, 5000);
+    </script>
+
+
+  </body>
+ </html>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}
+    {% trans "Search Results" %}
+{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">{% trans "Search Results for" %} "{{ query }}"</h2>
+
+    {% if results %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for product in results %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <img src="{{ product.image_1.url }}" class="card-img-top rounded-top-4" alt="{{ product.name }}" style="height: 300px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description|truncatechars:40 }}</p>
+                            <p class="fw-bold">
+                                {% if request.user.is_authenticated and request.user.is_vendor %}
+                                    {{ product.price_vendor }}$
+                                {% elif request.user.is_authenticated and not request.user.is_vendor  %}
+                                    {{ product.price_customer }}$
+                                {% else %}
+                                    ..,..$
+                                {% endif %}
+                            </p>
+                            <a href="{{ product.get_absolute_url }}" class="btn-main fs-small px-3 py-2 mt-2">
+                                {% trans "View Product" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center rounded-3 mt-5">
+            {% trans "No products found matching your search." %}
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

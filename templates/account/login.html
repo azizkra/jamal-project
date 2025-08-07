@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="row w-100 shadow-sm" style="max-width: 900px; border-radius: 12px; overflow: hidden;">
+
+        <!-- جانب الصورة -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <img src="{% static 'images/new_arrivals/collect2.png' %}" alt="صورة جانبية" class="img-fluid login-side-image">
+        </div>
+
+        <!-- نموذج تسجيل الدخول -->
+        <div class="col-md-6 p-4 login-form-container">
+            <h3 class="mb-4 text-center" style="color: var(--color-black-dark); font-weight: 600;">تسجيل الدخول</h3>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">اسم المستخدم</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="أدخل اسم المستخدم" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">كلمة المرور</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-main w-100 py-2">دخول</button>
+            </form>
+
+            {% if messages %}
+                <div class="mt-3">
+                    {% for message in messages %}
+                        <div class="alert alert-danger py-2 px-3" role="alert" style="font-size: 0.9rem;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="mt-4 text-center fs-small">
+                <a href="{% url 'account:register' %}" class="text-decoration-none text-muted">ليس لديك حساب؟ <strong>سجّل الآن</strong></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

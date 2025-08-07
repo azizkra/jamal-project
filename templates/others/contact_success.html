@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block content %}
+<div class="policy-container text-center">
+  <h2>شكراً لتواصلك معنا!</h2>
+  <p>تم استلام رسالتك وسنرد عليك في أقرب وقت ممكن.</p>
+  <a href="{% url 'shop:contact' %}" class="btn-main">إرسال رسالة أخرى</a>
+</div>
+{% endblock %}

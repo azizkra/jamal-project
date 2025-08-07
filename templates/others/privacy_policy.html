@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+
+{% block title %}
+    {% trans 'Privacy Policy' %}
+{% endblock title %}
+    
+
+{% block content %}
+
+    
+    <div class="policy-container">
+        <h1 class="mb-4">{% trans 'Privacy Policy' %}</h1>
+
+        <p>{% trans 'Welcome to our website' %}!</p>
+        <p>{% trans 'We value your privacy and are committed to protecting the personal information you provide when using our home products online store' %}.</p>
+
+        <h2>1. {% trans 'Information We Collect' %}</h2>
+        <ul>
+            <li>{% trans 'Full name' %}</li>
+            <li>{% trans 'Email address' %}</li>
+            <li>{% trans 'Phone number' %}</li>
+            <li>{% trans 'Shipping address' %}</li>
+            <li>{% trans 'Payment information (processed securely via third-party providers like Stripe; we do not store this information)' %}</li>
+        </ul>
+
+        <h2>2. {% trans 'How We Use Your Information' %}</h2>
+        <ul>
+            <li>{% trans 'Process and ship your orders' %}</li>
+            <li>{% trans 'Communicate with you regarding your purchases' %}</li>
+            <li>{% trans 'Improve our services and user experience' %}</li>
+            <li>{% trans 'Send promotional emails (only with your consent)' %}</li>
+        </ul>
+
+        <h2>3. {% trans 'Data Protection' %}</h2>
+        <p>{% trans 'We implement appropriate security measures to protect your personal data from unauthorized access, modification, or disclosure' %}.</p>
+
+        <h2>4. {% trans 'Information Sharing' %}</h2>
+        <p>{% trans 'We do' %} <strong>{% trans 'not' %}</strong> {% trans 'sell, rent, or share your personal information with third parties, except as needed for payment processing, shipping, or when legally required' %}.</p>
+
+        <h2>5. {% trans 'Cookies' %}</h2>
+        <p>{% trans 'We use cookies to enhance your browsing experience and analyze website usage. You can disable cookies through your browser settings if you prefer' %}.</p>
+
+        <h2>6. {% trans 'Your Rights' %}</h2>
+        <ul>
+            <li>{% trans 'Access your personal data' %}</li>
+            <li>{% trans 'Request correction or deletion of your data' %}</li>
+            <li>{% trans 'Unsubscribe from marketing communications at any time' %}</li>
+        </ul>
+
+        <h2>7. {% trans 'Policy Updates' %}</h2>
+        <p>{% trans 'We may update this privacy policy occasionally. All updates will be posted on this page' %}.</p>
+
+        <h2>8. {% trans 'Contact Us' %}</h2>
+        <p>{% trans 'If you have any questions about this privacy policy, feel free to contact us at' %}:</p>
+        <ul>
+            <li>{% trans 'Email' %}: <a href="mailto:support@yourstore.com">support@yourstore.com</a></li>
+            <li>{% trans 'Phone' %}: +970-xxx-xxxx</li>
+        </ul>
+    </div>
+
+    
+{% endblock content %}

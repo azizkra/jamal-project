@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4" style="color: var(--color-black-dark); font-weight: 600;">لوحة التاجر</h2>
+
+    <div class="mb-4">
+        <p>مرحبًا <strong>{{ request.user.username }}</strong>! أنت مسجل كتاجر.</p>
+        <p>الرقم الضريبي الخاص بك: <strong>{{ request.user.tax_number }}</strong></p>
+        <a href="/" class="btn-main fs-small px-3 py-2 mt-2">العودة للرئيسية</a>
+    </div>
+
+    <div class="row">
+        {% for item in purchased_products %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm border-0" style="border-radius: 12px; background-color: var(--color-grey-lighter);">
+                    <a href="{{ item.product.get_absolute_url }}">
+                        <img src="{{ item.product.image_1.url }}" class="card-img-top rounded-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover;">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: 600;">{{ item.product.name }}</h5>
+                        <p class="text-muted fs-small mb-1">🔸 <strong>{% trans 'quantity' %}:</strong> {{ item.quantity }}</p>
+                        <p class="text-muted fs-small mb-1">💵 <strong>{% trans 'Total price' %}</strong> ${{ item.get_cost }}</p>
+                        <hr>
+                        <p class="text-muted fs-small mb-1">👤 <strong>{% trans 'Customer' %}:</strong> {{ item.order.first_name }} {{ item.order.last_name }}</p>
+                        <p class="text-muted fs-small mb-1">📧 <strong>{% trans 'E-mail' %}:</strong> {{ item.order.email }}</p>
+                        <p class="text-muted fs-small">📱 <strong>{% trans 'Phone' %}:</strong> {{ item.order.phone }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info text-center">لم تقم بشراء أي منتجات بعد.</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

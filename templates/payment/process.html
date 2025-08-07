@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Pay your order' %}{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+  <h1 class="mb-4 fw-bold">{% trans 'Order summary' %}</h1>
+
+  <div class="table-responsive">  <!-- لجعل الجدول قابل للتمرير في الشاشات الصغيرة -->
+    <table class="table mb-0 align-middle">
+      <thead>
+        <tr>
+          <th>{% trans 'Image' %}</th>
+          <th>{% trans 'Product' %}</th>
+          <th>{% trans 'Price' %}</th>
+          <th>{% trans 'Quantity' %}</th>
+          <th>{% trans 'Total' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in order.items.all %}
+        <tr>
+          <td>
+            <img class="rounded-2" width="70" height="70" src="{% if item.product.image_1 %}
+                            {{ item.product.image_1.url }}
+                        {% else %}
+                            {% static 'img/no_image.png' %}
+                        {% endif %}" alt="product">
+          </td>
+          <td>{{ item.product.name }}</td>
+          <td class="text-muted fs-small px-0">${{ item.price }}</td>
+          <td class="text-muted fs-small px-0">{{ item.quantity }}</td>
+          <td class="text-muted fs-small px-0">${{ item.get_cost }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="total">
+          <td colspan="4" class="text-muted fs-small px-0 text-end">{% trans 'Total' %}</td>
+          <td class="num fw-bold">${{ order.get_total_cost }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <form action="{% url 'payment:process' %}" method="post" class="text-center mt-4">
+    {% csrf_token %}
+    <input type="submit" class="btn-main w-100 w-md-auto" value="{% trans 'Pay Now' %}">
+  </form>
+</section>
+
+{% endblock %}
+

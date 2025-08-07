@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">📊 سجل المبيعات</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-nowrap">🛍️ المنتج</th>
+                    <th class="text-nowrap">📦 الكمية</th>
+                    <th class="text-nowrap">💵 السعر الإجمالي</th>
+                    <th class="text-nowrap">👤 اسم المشتري</th>
+                    <th class="text-nowrap">✉️ الإيميل</th>
+                    <th class="text-nowrap">📞 رقم الهاتف</th>
+                    <th class="text-nowrap">⏰ وقت الشراء</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in sales %}
+                <tr>
+                    <td class="text-nowrap">{{ sale.product.name }}</td>
+                    <td>{{ sale.quantity }}</td>
+                    <td>${{ sale.total_price }}</td>
+                    <td class="text-nowrap">{{ sale.buyer_name }}</td>
+                    <td class="text-nowrap">{{ sale.buyer_email }}</td>
+                    <td class="text-nowrap">{{ sale.buyer_phone }}</td>
+                    <td class="text-nowrap">{{ sale.purchase_time|date:"Y-m-d H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-muted">🚫 لا توجد مبيعات مسجلة.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

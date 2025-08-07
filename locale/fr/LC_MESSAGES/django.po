@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-01 11:52+0300\n"
+"PO-Revision-Date: 2025-07-23 11:55+0000\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.2\n"
+
+#: .\account\views.py:41
+msgid "اسم المستخدم أو كلمة المرور غير صحيحة"
+msgstr ""
+
+#: .\cart\form.py:7
+msgid "Quantity"
+msgstr "Quantité"
+
+#: .\mysite\settings.py:125
+msgid "English"
+msgstr "Anglaise"
+
+#: .\mysite\settings.py:126
+msgid "French"
+msgstr "Français"
+
+#: .\mysite\settings.py:127
+msgid "German"
+msgstr "Allemande"
+
+#: .\mysite\settings.py:128
+msgid "Dutch"
+msgstr ""
+
+#: .\mysite\urls.py:12
+#, fuzzy
+msgid "cart/"
+msgstr "panier/"
+
+#: .\mysite\urls.py:13
+msgid "orders/"
+msgstr "ordres/"
+
+#: .\mysite\urls.py:14
+msgid "payment/"
+msgstr "paiement/"
+
+#: .\mysite\urls.py:15
+msgid "rosetta/"
+msgstr "rosette/"
+
+#: .\mysite\urls.py:16
+msgid "account/"
+msgstr "compte/"
+
+#: .\payment\urls.py:9
+msgid "process/"
+msgstr "processus/"
+
+#: .\payment\urls.py:10
+msgid "completed/"
+msgstr "complété/"
+
+#: .\payment\urls.py:11
+msgid "canceled/"
+msgstr "annulé/"
+
+#: .\templates\account\customer_profile.html:25
+#, fuzzy
+#| msgid "Quantity"
+msgid "quantity"
+msgstr "Quantité"
+
+#: .\templates\account\customer_profile.html:26
+#, fuzzy
+#| msgid "Total"
+msgid "Total price"
+msgstr "Totale"
+
+#: .\templates\account\customer_profile.html:28
+msgid "Customer"
+msgstr ""
+
+#: .\templates\account\customer_profile.html:29
+#, fuzzy
+#| msgid "Email"
+msgid "E-mail"
+msgstr "E-mail"
+
+#: .\templates\account\customer_profile.html:30
+#: .\templates\orders\order\create.html:35
+msgid "Phone"
+msgstr "Téléphone"
+
+#: .\templates\base.html:21
+msgid "My shop"
+msgstr "Ma boutique"
+
+#: .\templates\base.html:33
+msgid "Jammal Gold"
+msgstr ""
+
+#: .\templates\base.html:43
+msgid "Home"
+msgstr "Maison"
+
+#: .\templates\base.html:46
+msgid "Shop"
+msgstr "Boutique"
+
+#: .\templates\base.html:49
+msgid "About"
+msgstr "À propos"
+
+#: .\templates\base.html:52
+msgid "Contact"
+msgstr "Contact"
+
+#: .\templates\base.html:150
+msgid "Privacy Policy"
+msgstr "politique de confidentialité"
+
+#: .\templates\base.html:153
+msgid "Terms of Service"
+msgstr "Conditions d'utilisation"
+
+#: .\templates\base.html:156
+msgid "Contact Us"
+msgstr "Contactez-nous"
+
+#: .\templates\base.html:176
+msgid "@2025 Trendify. All rights reserved"
+msgstr "@2025 Trendify. Tous droits réservés."
+
+#: .\templates\orders\order\create.html:6
+#: .\templates\orders\order\create.html:13
+msgid "Checkout"
+msgstr "Vérifier"
+
+#: .\templates\orders\order\create.html:20
+msgid "First Name"
+msgstr "Prénom"
+
+#: .\templates\orders\order\create.html:25
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#: .\templates\orders\order\create.html:30
+msgid "Email"
+msgstr "E-mail"
+
+#: .\templates\orders\order\create.html:40
+msgid "Address"
+msgstr "Adresse"
+
+#: .\templates\orders\order\create.html:46
+msgid "Residence Place"
+msgstr "Lieu de résidence"
+
+#: .\templates\orders\order\create.html:52
+msgid "Postal Code"
+msgstr "Code Postal"
+
+#: .\templates\orders\order\create.html:62
+msgid "City"
+msgstr "Ville"
+
+#: .\templates\orders\order\create.html:67
+msgid "Place Order"
+msgstr "Passer la commande"
+
+#: .\templates\orders\order\create.html:74
+msgid "Your order"
+msgstr "Votre commande"
+
+#: .\templates\orders\order\create.html:84
+msgid "Total"
+msgstr "Totale"
+
+#: .\templates\others\search_results.html:5
+msgid "Search Results"
+msgstr ""
+
+#: .\templates\others\search_results.html:10
+msgid "Search Results for"
+msgstr ""
+
+#: .\templates\others\search_results.html:31
+#, fuzzy
+#| msgid "Products"
+msgid "View Product"
+msgstr "Produits"
+
+#: .\templates\others\search_results.html:40
+msgid "No products found matching your search."
+msgstr ""
+
+#: .\templates\shop\product\detail.html:47
+#: .\templates\shop\product\detail.html:49
+#: .\templates\shop\product\detail.html:51
+msgid "Price"
+msgstr "Prix"
+
+#: .\templates\shop\product\detail.html:54
+msgid "Available Stock"
+msgstr "Stocks disponibles"
+
+#: .\templates\shop\product\detail.html:61
+msgid "Add to Cart"
+msgstr "Ajouter au panier"
+
+#: .\templates\shop\product\detail.html:65
+msgid "login for more!"
+msgstr ""
+
+#: .\templates\shop\product\detail.html:70
+msgid "Product Description"
+msgstr "Description du produit"
+
+#: .\templates\shop\product\detail.html:75
+msgid "Category"
+msgstr "Catégorie"
+
+#: .\templates\shop\product\detail.html:86
+msgid "You might also like:"
+msgstr ""
+
+#: .\templates\shop\product\list.html:6
+msgid "Products"
+msgstr "Produits"
+
+#: .\templates\shop\product\list.html:13
+msgid "Discover Your Style"
+msgstr "Découvrez votre style"
+
+#: .\templates\shop\product\list.html:14
+msgid ""
+"Explore our curated collection of fashion-forward pieces that reflect your "
+"unique personality"
+msgstr ""
+"Découvrez notre collection organisée de pièces avant-gardistes qui reflètent "
+"votre personnalité unique"
+
+#: .\templates\shop\product\list.html:19
+msgid "Featured Products"
+msgstr "Produits en vedette"
+
+#: .\templates\shop\product\list.html:39
+msgid "no product yet"
+msgstr "pas encore de produit"
+
+#~ msgid "My Shop"
+#~ msgstr "Ma boutique"

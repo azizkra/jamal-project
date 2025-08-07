@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+<main class="container mt-4">
+  <section class="row product-section">
+    
+    <!-- ✅ الصور - يسار -->
+    <div class="col-lg-6 mb-4">
+      <div class="border rounded p-2 mb-3">
+        <img id="mainImage" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
+             alt="{{ product.name }}" class="img-fluid rounded w-100" style="max-height: 500px; object-fit: cover;">
+      </div>
+
+      <!-- ✅ الصور المصغرة -->
+      <div class="d-flex flex-wrap gap-2">
+        {% if product.image_1 %}
+          <img src="{{ product.image_1.url }}" alt="Main" class="img-thumbnail thumb-image"
+              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+        {% endif %}
+        {% if product.image_2 %}
+          <img src="{{ product.image_2.url }}" alt="Image 2" class="img-thumbnail thumb-image"
+              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+        {% endif %}
+        {% if product.image_3 %}
+          <img src="{{ product.image_3.url }}" alt="Image 3" class="img-thumbnail thumb-image"
+              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+        {% endif %}
+        {% if product.image_4 %}
+          <img src="{{ product.image_4.url }}" alt="Image 4" class="img-thumbnail thumb-image"
+              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+        {% endif %}
+      </div>
+    </div> <!-- ✅ إغلاق عمود الصور -->
+
+    <!-- ✅ التفاصيل - يمين -->
+    <div class="col-lg-6">
+      <h2 class="fw-bold mb-2">{{ product.name }}</h2>
+      <p class="text-muted mb-3">Brand: Luxe Threads | Style: Evening Gown | Color: Midnight Blue</p>
+
+      {% if request.user.is_authenticated and request.user.is_vendor %}
+        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_vendor }}</p>
+      {% elif request.user.is_authenticated and not request.user.is_vendor %}
+        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_customer }}</p>
+      {% else %}
+        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: $..,..</p>
+      {% endif %}
+
+      <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>
+
+      
+      {% if request.user.is_authenticated %}
+        <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
+          {% csrf_token %}
+          {{ cart_product_form }}
+          <button class="btn-main fs-small px-3 py-2 mt-2">{% trans 'Add to Cart' %}</button>
+        </form>
+      
+      {% else %}
+        <p>{% trans 'login for more!' %}</p>
+      {% endif %}
+        
+
+      <div class="mt-5">
+        <h4 class="fw-semibold mb-2">{% trans 'Product Description' %}</h4>
+        <p class="text-muted">{{ product.description }}</p>
+      </div>
+
+      <div class="mt-4">
+        {% trans 'Category' %}:
+        <a href="{{ product.category.get_absolute_url }}" class="text-decoration-none">
+          {{ product.category }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ المنتجات المشابهة -->
+  {% if similar_products %}
+  <div class="mb-5 ps-3">
+    <h6 class="fw-semibold mb-3">{% trans 'You might also like:' %}</h6>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+      {% for similar in similar_products %}
+        <div class="col">
+          <a href="{{ similar.get_absolute_url }}" class="text-decoration-none text-dark">
+            <div class="card h-100">
+              <img src="{% if similar.image_1 %}{{ similar.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
+                  alt="{{ similar.name }}" class="card-img-top"  style="height: 200px; object-fit: cover; width: 100%;">
+              <div class="card-body p-2">
+                <p class="card-title fs-small mb-1">{{ similar.name|truncatechars:40 }}</p>
+                {% if request.user.is_authenticated and request.user.is_vendor %}
+                  <p class="card-title fs-small mb-1">${{ similar.price_vendor }}</p>
+                {% else %}
+                  <p class="card-title fs-small mb-1">${{ similar.price_customer }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% empty %}
+        <p>No similar product</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</main>
+
+<!-- ✅ سلوك تغيير الصورة بالـ JavaScript -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const thumbnails = document.querySelectorAll(".thumb-image");
+    const mainImage = document.getElementById("mainImage");
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        mainImage.src = thumb.src;
+        
+        thumbnails.forEach(t => t.classList.remove("selected"));
+        thumb.classList.add("selected");
+      });
+    });
+  });
+</script>
+{% endblock %}

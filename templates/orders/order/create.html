@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load form_tags %}
+
+{% block title %}
+    {% trans 'Checkout' %}
+{% endblock %}
+
+    
+{% block content %}
+
+<section>
+  <h4 class="my-4 fw-bold">{% trans 'Checkout' %}</h4>
+    <div class="row">
+        <!-- القسم الأيسر: نموذج الدفع -->
+        <div class="col-md-6">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+            <label for="first_name" class="form-label fw-medium fs-small">{% trans 'First Name' %}</label>
+                {{ form.first_name|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            <div class="mb-3">
+            <label for="last_name" class="form-label fw-medium fs-small">{% trans 'Last Name' %}</label>
+                {{ form.last_name|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            <div class="mb-3">
+            <label for="email" class="form-label fw-medium fs-small">{% trans 'Email' %}</label>
+                {{ form.email|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            <div class="mb-3">
+            <label for="phone" class="form-label fw-medium fs-small">{% trans 'Phone' %}</label>
+                {{ form.phone|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            <div class="mb-3">
+            <label for="address" class="form-label fw-medium fs-small">{% trans 'Address' %}</label>
+                {{ form.address|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            
+            <div class="mb-3">
+            <label for="residence_place" class="form-label fw-medium fs-small">{% trans 'Residence Place' %}</label>
+                {{ form.residence_place|add_class:"form-control py-3 fs-small" }}
+            </div>
+
+            <div class="row mb-3">
+            <div class="col">
+                <label for="postal_code" class="form-label fw-medium fs-small">{% trans 'Postal Code' %}</label>
+                {{ form.postal_code|add_class:"form-control py-3 fs-small" }}
+            </div>
+            <div class="col">
+                <label for="city" class="form-label fw-medium fs-small">{% trans 'City' %}</label>
+                {{ form.city|add_class:"form-control py-3 fs-small" }}
+            </div>
+            </div>
+
+            <button type="submit" class="btn-main w-100">{% trans 'Place Order' %}</button>
+        </form>
+        </div>
+
+        <!-- القسم الأيمن: معلومات الطلب -->
+        <div class="col-12 col-sm-8 col-md-6 mx-auto mt-4">
+            <div class="order-info small-order-box p-4 border rounded-3 bg-light"">
+                <h5 class="fw-bold mb-3">{% trans 'Your order' %}</h5>
+                <ul class="list-unstyled">
+                    {% for item in cart %}
+                        <li class="d-flex justify-content-between mb-2">
+                            <span>{{ item.quantity }}x {{ item.product.name }}</span>
+                            <span>${{ item.total_price }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <p class="fw-bold text-end">{% trans 'Total' %}: ${{ cart.get_total_price }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
