@@ -85,6 +85,7 @@ def category_list(request):
     return render(request, 'shop/product/categories.html', {'categories': categories})
 
 # --- قائمة المنتجات (حسب الفئة) ---
+NEW_ARRIVALS_CATEGORY_ID = 3
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -93,8 +94,7 @@ def product_list(request, category_slug=None):
 
     # استخراج فئة New Arrivals
     try:
-        new_arrivals_category = Category.objects.get(translations__language_code=language,
-                                                     translations__slug='new-arrivals')
+        new_arrivals_category = Category.objects.get(id=NEW_ARRIVALS_CATEGORY_ID)
         # المنتجات الجديدة من خلال الفئة
         new_arrivals = Product.objects.filter(category=new_arrivals_category, stock__gt=0)
         new_arrival_ids = new_arrivals.values_list('id', flat=True)
