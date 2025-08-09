@@ -120,22 +120,32 @@ def product_list(request, category_slug=None):
         'new_arrivals': new_arrivals,
     })
 
+
 # --- تفاصيل المنتج ---
 def product_detail(request, id, slug):
-    language = request.LANGUAGE_CODE
+    language = get_language()
+    
+    # البحث عن المنتج باستخدام ID أولاً لضمان العثور عليه
     product = get_object_or_404(Product,
                                 id=id,
-                                translations__language_code=language,
-                                translations__slug=slug,
                                 available=True,
-                                stock__gt=0
-    )
+                                stock__gt=0)
+    
+    # التبديل إلى اللغة المطلوبة لجلب الترجمة الصحيحة
+    product.set_current_language(language)
+
+    # التحقق مما إذا كان الـ slug في الرابط يطابق الـ slug للغة الحالية
+    if product.slug != slug:
+        # إذا لم يتطابق، قم بإعادة التوجيه إلى الرابط الصحيح (SEO friendly)
+        return redirect(product.get_absolute_url(), permanent=True)
+
     cart_product_form = CartAddProductForm(stock=product.stock)
 
-    # منتجات مشابهة من نفس الفئة
+    # منتجات مشابهة من نفس الفئة (باستثناء المنتج الحالي)
     similar_products = Product.objects.filter(
         category=product.category,
-        available=True
+        available=True,
+        stock__gt=0
     ).exclude(id=product.id)[:4]
 
     return render(request, 'shop/product/detail.html', {
