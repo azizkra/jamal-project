@@ -3,13 +3,13 @@
 
 
 {% block title %}
-    Shop By Category
+    {% trans 'Shop By Category' %}
 {% endblock title %}
 
 
 {% block content %}
     <section>
-        <h3 class="my-4 fw-semibold">Shop by Category</h3>
+        <h3 class="my-4 fw-semibold">{% trans 'Shop by Category' %}</h3>
         <ul class="m-0 p-0 list-unstyled d-flex gap-3 flex-wrap">
             {% for c in categories %}
                 <li {% if category.slug == c.slug %}class="selected"{% endif %}class="h-100">

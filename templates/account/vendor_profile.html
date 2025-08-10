@@ -24,12 +24,12 @@
     {% endfor %}
 </div> -->
 
-<h2 class="mb-4">لوحة التاجر</h2>
+<h2 class="mb-4">{% trans 'Trader panel' %}</h2>
 
-<p>مرحبًا <strong>{{ request.user.username }}</strong>! أنت مسجل كتاجر.</p>
-<p>الرقم الضريبي الخاص بك: <strong>{{ request.user.tax_number }}</strong></p>
+<p>{% trans 'Welcome' %} <strong>{{ request.user.username }}</strong>{% trans 'You are registered as a merchant!' %}</p>
+<p>{% trans 'Your tax number: ' %} <strong>{{ request.user.tax_number }}</strong></p>
 
-<a href="/" class="btn btn-primary mb-4">العودة للرئيسية</a>
+<a href="/" class="btn btn-primary mb-4">{% trans 'Back to main page' %}</a>
 
 <div class="row">
     {% for item in purchased_products %}
@@ -38,18 +38,18 @@
                 <img src="{{ item.product.image_1.url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.product.name }}</h5>
-                    <p class="card-text mb-1">🔸 <strong>الكمية:</strong> {{ item.quantity }}</p>
-                    <p class="card-text mb-1">💵 <strong>السعر الإجمالي:</strong> ${{ item.get_cost }}</p>
+                    <p class="card-text mb-1">🔸 <strong>{% trans 'Quantity' %}:</strong> {{ item.quantity }}</p>
+                    <p class="card-text mb-1">💵 <strong>{% trans 'Total price ' %} :</strong> ${{ item.get_cost }}</p>
                     <hr>
-                    <p class="card-text mb-1">👤 <strong>الزبون:</strong> {{ item.order.first_name }} {{ item.order.last_name }}</p>
-                    <p class="card-text mb-1">📧 <strong>البريد:</strong> {{ item.order.email }}</p>
-                    <p class="card-text">📱 <strong>الهاتف:</strong> {{ item.order.phone }}</p>
+                    <p class="card-text mb-1">👤 <strong>{% trans 'Customer ' %}:</strong> {{ item.order.first_name }} {{ item.order.last_name }}</p>
+                    <p class="card-text mb-1">📧 <strong>{% trans 'mail' %}:</strong> {{ item.order.email }}</p>
+                    <p class="card-text">📱 <strong>{% trans 'Phone ' %}:</strong> {{ item.order.phone }}</p>
                 </div>
             </div>
         </div>
     {% empty %}
         <div class="col-12">
-            <p class="alert alert-info">لم تقم بشراء أي منتجات بعد.</p>
+            <p class="alert alert-info">{% trans 'You have not purchased any products yet.' %}</p>
         </div>
     {% endfor %}
 </div>

@@ -8,9 +8,9 @@
     <h2 class="mb-4" style="color: var(--color-black-dark); font-weight: 600;">لوحة التاجر</h2>
 
     <div class="mb-4">
-        <p>مرحبًا <strong>{{ request.user.username }}</strong>! أنت مسجل كتاجر.</p>
-        <p>الرقم الضريبي الخاص بك: <strong>{{ request.user.tax_number }}</strong></p>
-        <a href="/" class="btn-main fs-small px-3 py-2 mt-2">العودة للرئيسية</a>
+        <p>مرحبًا <strong>{{ request.user.username }}</strong>{% trans 'You are registered as a merchant !' %}.</p>
+        <p>{% trans 'Your tax number:' %} <strong>{{ request.user.tax_number }}</strong></p>
+        <a href="/" class="btn-main fs-small px-3 py-2 mt-2">{% trans 'Back to main page' %}</a>
     </div>
 
     <div class="row">
@@ -33,7 +33,7 @@
             </div>
         {% empty %}
             <div class="col-12">
-                <div class="alert alert-info text-center">لم تقم بشراء أي منتجات بعد.</div>
+                <div class="alert alert-info text-center">{% trans 'You have not purchased any products yet.' %}</div>
             </div>
         {% endfor %}
     </div>

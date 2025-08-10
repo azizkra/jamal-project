@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 11:41+0300\n"
+"POT-Creation-Date: 2025-08-10 23:13+0300\n"
 "PO-Revision-Date: 2025-07-23 11:41+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,6 +64,10 @@ msgid "paid"
 msgstr "payé"
 
 #: .\orders\models.py:21
+msgid "is_delivired"
+msgstr ""
+
+#: .\orders\models.py:22
 msgid "stripe_id"
 msgstr "stripe_id"
 

@@ -15,13 +15,13 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, _('تم إنشاء الحساب وتسجيل الدخول بنجاح.'))
+            messages.success(request, _('Account created and login successful.'))
             if user.is_vendor:
                 return redirect('account:vendor_profile') # اسم الصفحة الخاصة بالتاجر
             else:
                 return redirect('account:customer_profile') # اسم الصفحة الخاصة بالزبون
         else:
-            messages.error(request, _('حدث خطأ أثناء إنشاء الحساب. يرجى التحقق من البيانات.'))
+            messages.error(request, _('An error occurred while creating your account. Please check your data.'))
     else:
         form = CustomUserRegistrainForm()
     return render(request, 'account/register.html', {'form':form})
@@ -35,13 +35,13 @@ def CustomLoginView(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, _('تم تسجيل الدخول بنجاح.'))
+            messages.success(request, _('You have successfully logged in.'))
             if user.is_vendor:
                 return redirect('account:vendor_profile') # اسم الصفحة الخاصة بالتاجر
             else:
                 return redirect('account:customer_profile') # اسم الصفحة الخاصة بالتاجر
         else:
-            messages.error(request, _('اسم المستخدم أو كلمة المرور غير صحيحة'))
+            messages.error(request, _('Incorrect username or password'))
     return render(request, 'account/login.html')
 
 

@@ -8,26 +8,26 @@
 
         <!-- جانب الصورة -->
         <div class="col-md-6 d-none d-md-block p-0">
-            <img src="{% static 'images/new_arrivals/collect2.png' %}" alt="صورة جانبية" class="img-fluid login-side-image">
+            <img src="{% static 'images/new_arrivals/collect2.png' %}" alt="{% trans 'side photo' %}" class="img-fluid login-side-image">
         </div>
 
         <!-- نموذج تسجيل الدخول -->
         <div class="col-md-6 p-4 login-form-container">
-            <h3 class="mb-4 text-center" style="color: var(--color-black-dark); font-weight: 600;">تسجيل الدخول</h3>
+            <h3 class="mb-4 text-center" style="color: var(--color-black-dark); font-weight: 600;">{% trans 'Login' %}</h3>
 
             <form method="post" novalidate>
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="username" class="form-label">اسم المستخدم</label>
-                    <input type="text" name="username" class="form-control" id="username" placeholder="أدخل اسم المستخدم" required>
+                    <label for="username" class="form-label">{% trans 'User name' %}</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="{% trans 'Enter username' %}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">كلمة المرور</label>
+                    <label for="password" class="form-label">{% trans 'Password' %}</label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn-main w-100 py-2">دخول</button>
+                <button type="submit" class="btn-main w-100 py-2">{% trans 'Login' %}</button>
             </form>
 
             {% if messages %}
@@ -41,7 +41,7 @@
             {% endif %}
 
             <div class="mt-4 text-center fs-small">
-                <a href="{% url 'account:register' %}" class="text-decoration-none text-muted">ليس لديك حساب؟ <strong>سجّل الآن</strong></a>
+                <a href="{% url 'account:register' %}" class="text-decoration-none text-muted">{% trans "Don't have an account?" %}<strong>{% trans 'Register now' %}</strong></a>
             </div>
         </div>
     </div>

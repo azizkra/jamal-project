@@ -1,10 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from django.utils.translation import gettext_lazy as _
+
 
 class CustomUserRegistrainForm(UserCreationForm):
-    is_vendor = forms.BooleanField(required=False, label='هل انت تاجر')
-    tax_number = forms.CharField(required=False, label='الرقم الضريبي')
+    is_vendor = forms.BooleanField(required=False, label=_('Are you a merchant?'))
+    tax_number = forms.CharField(required=False, label=_('Tax number'))
 
     class Meta:
         model = CustomUser
@@ -29,7 +31,7 @@ class CustomUserRegistrainForm(UserCreationForm):
         tax_number = cleaned_data.get('tax_number')
 
         if is_vendor and not tax_number:
-            self.add_error('tax_number', 'يجب ادخال الرقم الضريبي للتجار')
+            self.add_error('tax_number', _('Merchant tax number must be entered'))
 
         if not is_vendor and tax_number:
-            self.add_error('is_vendor', 'يجب تحديد أنك تاجر إذا أدخلت الرقم الضريبي')
+            self.add_error('is_vendor', _('You must specify that you are a merchant if you enter your tax number.'))

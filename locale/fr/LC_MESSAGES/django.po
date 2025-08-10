@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 11:52+0300\n"
+"POT-Creation-Date: 2025-08-10 23:13+0300\n"
 "PO-Revision-Date: 2025-07-23 11:55+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,62 +19,106 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\account\views.py:41
-msgid "اسم المستخدم أو كلمة المرور غير صحيحة"
+#: .\account\form.py:8
+msgid "Are you a merchant?"
 msgstr ""
 
-#: .\cart\form.py:7
+#: .\account\form.py:9
+msgid "Tax number"
+msgstr ""
+
+#: .\account\form.py:34
+msgid "Merchant tax number must be entered"
+msgstr ""
+
+#: .\account\form.py:37
+msgid "You must specify that you are a merchant if you enter your tax number."
+msgstr ""
+
+#: .\account\views.py:18
+msgid "Account created and login successful."
+msgstr ""
+
+#: .\account\views.py:24
+msgid "An error occurred while creating your account. Please check your data."
+msgstr ""
+
+#: .\account\views.py:38
+msgid "You have successfully logged in."
+msgstr ""
+
+#: .\account\views.py:44
+msgid "Incorrect username or password"
+msgstr ""
+
+#: .\cart\form.py:7 .\templates\account\vendor_profile.html:41
+#: .\templates\admin\orders\order\detail.html:81
+#: .\templates\cart\detail.html:25 .\templates\orders\order\pdf.html:113
+#: .\templates\payment\process.html:17
 msgid "Quantity"
 msgstr "Quantité"
 
-#: .\mysite\settings.py:125
+#: .\mysite\settings.py:104
 msgid "English"
 msgstr "Anglaise"
 
-#: .\mysite\settings.py:126
+#: .\mysite\settings.py:105
 msgid "French"
 msgstr "Français"
 
-#: .\mysite\settings.py:127
+#: .\mysite\settings.py:106
 msgid "German"
 msgstr "Allemande"
 
-#: .\mysite\settings.py:128
+#: .\mysite\settings.py:107
 msgid "Dutch"
 msgstr ""
 
-#: .\mysite\urls.py:12
+#: .\mysite\urls.py:17
 #, fuzzy
 msgid "cart/"
 msgstr "panier/"
 
-#: .\mysite\urls.py:13
+#: .\mysite\urls.py:18
 msgid "orders/"
 msgstr "ordres/"
 
-#: .\mysite\urls.py:14
+#: .\mysite\urls.py:19
 msgid "payment/"
 msgstr "paiement/"
 
-#: .\mysite\urls.py:15
-msgid "rosetta/"
-msgstr "rosette/"
-
-#: .\mysite\urls.py:16
+#: .\mysite\urls.py:20
 msgid "account/"
 msgstr "compte/"
 
-#: .\payment\urls.py:9
+#: .\mysite\urls.py:23
+msgid "rosetta/"
+msgstr "rosette/"
+
+#: .\payment\urls.py:8
 msgid "process/"
 msgstr "processus/"
 
-#: .\payment\urls.py:10
+#: .\payment\urls.py:9
 msgid "completed/"
 msgstr "complété/"
 
-#: .\payment\urls.py:11
+#: .\payment\urls.py:10
 msgid "canceled/"
 msgstr "annulé/"
+
+#: .\templates\account\customer_profile.html:11
+msgid "You are registered as a merchant !"
+msgstr ""
+
+#: .\templates\account\customer_profile.html:12
+msgid "Your tax number:"
+msgstr ""
+
+#: .\templates\account\customer_profile.html:13
+#: .\templates\account\vendor_profile.html:32
+msgid "Back to main page"
+msgstr ""
 
 #: .\templates\account\customer_profile.html:25
 #, fuzzy
@@ -89,19 +133,204 @@ msgid "Total price"
 msgstr "Totale"
 
 #: .\templates\account\customer_profile.html:28
+#: .\templates\admin\orders\order\detail.html:35
 msgid "Customer"
 msgstr ""
 
 #: .\templates\account\customer_profile.html:29
+#: .\templates\admin\orders\order\detail.html:38
 #, fuzzy
 #| msgid "Email"
 msgid "E-mail"
 msgstr "E-mail"
 
 #: .\templates\account\customer_profile.html:30
-#: .\templates\orders\order\create.html:35
+#: .\templates\orders\order\create.html:35 .\templates\others\about.html:49
+#: .\templates\others\privacy_policy.html:59
 msgid "Phone"
 msgstr "Téléphone"
+
+#: .\templates\account\customer_profile.html:36
+#: .\templates\account\vendor_profile.html:52
+msgid "You have not purchased any products yet."
+msgstr ""
+
+#: .\templates\account\login.html:11
+msgid "side photo"
+msgstr ""
+
+#: .\templates\account\login.html:16 .\templates\account\login.html:30
+msgid "Login"
+msgstr ""
+
+#: .\templates\account\login.html:21
+msgid "User name"
+msgstr ""
+
+#: .\templates\account\login.html:22
+msgid "Enter username"
+msgstr ""
+
+#: .\templates\account\login.html:26
+msgid "Password"
+msgstr ""
+
+#: .\templates\account\login.html:44
+msgid "Don't have an account?"
+msgstr ""
+
+#: .\templates\account\login.html:44
+msgid "Register now"
+msgstr ""
+
+#: .\templates\account\register.html:75
+msgid "registration"
+msgstr ""
+
+#: .\templates\account\register.html:89
+msgid "Do you have an account? "
+msgstr ""
+
+#: .\templates\account\register.html:89
+msgid "Log in "
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:27
+msgid "Trader panel"
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:29
+msgid "Welcome"
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:29
+msgid "You are registered as a merchant!"
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:30
+msgid "Your tax number: "
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:42
+#, fuzzy
+#| msgid "Total"
+msgid "Total price "
+msgstr "Totale"
+
+#: .\templates\account\vendor_profile.html:44
+msgid "Customer "
+msgstr ""
+
+#: .\templates\account\vendor_profile.html:45
+#, fuzzy
+#| msgid "Email"
+msgid "mail"
+msgstr "E-mail"
+
+#: .\templates\account\vendor_profile.html:46
+#, fuzzy
+#| msgid "Phone"
+msgid "Phone "
+msgstr "Téléphone"
+
+#: .\templates\admin\orders\order\detail.html:11
+msgid "home"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:12
+#, fuzzy
+#| msgid "orders/"
+msgid "Orders"
+msgstr "ordres/"
+
+#: .\templates\admin\orders\order\detail.html:14
+#: .\templates\admin\orders\order\detail.html:22
+#, fuzzy
+#| msgid "orders/"
+msgid "Order"
+msgstr "ordres/"
+
+#: .\templates\admin\orders\order\detail.html:15
+msgid "Detail"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:26
+#, fuzzy
+#| msgid "Your order"
+msgid "Print order"
+msgstr "Votre commande"
+
+#: .\templates\admin\orders\order\detail.html:32
+msgid "Created"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:42
+#: .\templates\orders\order\create.html:40 .\templates\others\about.html:50
+msgid "Address"
+msgstr "Adresse"
+
+#: .\templates\admin\orders\order\detail.html:49
+msgid "Total amount"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:53
+#: .\templates\admin\orders\order\detail.html:57
+msgid "Status"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:54
+#: .\templates\orders\order\pdf.html:136
+msgid "Paid"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:54
+#: .\templates\orders\order\pdf.html:136
+#, fuzzy
+#| msgid "payment/"
+msgid "Pending payment"
+msgstr "paiement/"
+
+#: .\templates\admin\orders\order\detail.html:58
+msgid "delivired"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:58
+msgid "Pending delivired"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:61
+#, fuzzy
+#| msgid "payment/"
+msgid "Stripe payment"
+msgstr "paiement/"
+
+#: .\templates\admin\orders\order\detail.html:75
+#: .\templates\orders\order\pdf.html:107
+msgid "Items bought"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:79
+#: .\templates\orders\order\pdf.html:111 .\templates\payment\process.html:15
+#, fuzzy
+#| msgid "Products"
+msgid "Product"
+msgstr "Produits"
+
+#: .\templates\admin\orders\order\detail.html:80
+#: .\templates\orders\order\pdf.html:112 .\templates\payment\process.html:16
+#: .\templates\shop\product\detail.html:47
+#: .\templates\shop\product\detail.html:49
+#: .\templates\shop\product\detail.html:51
+msgid "Price"
+msgstr "Prix"
+
+#: .\templates\admin\orders\order\detail.html:82
+#: .\templates\admin\orders\order\detail.html:96
+#: .\templates\cart\detail.html:59 .\templates\orders\order\create.html:78
+#: .\templates\orders\order\pdf.html:127 .\templates\payment\process.html:18
+#: .\templates\payment\process.html:39
+msgid "Total"
+msgstr "Totale"
 
 #: .\templates\base.html:21
 msgid "My shop"
@@ -127,21 +356,66 @@ msgstr "À propos"
 msgid "Contact"
 msgstr "Contact"
 
-#: .\templates\base.html:150
+#: .\templates\base.html:150 .\templates\others\privacy_policy.html:6
+#: .\templates\others\privacy_policy.html:14
 msgid "Privacy Policy"
 msgstr "politique de confidentialité"
 
-#: .\templates\base.html:153
+#: .\templates\base.html:153 .\templates\others\terms.html:6
+#: .\templates\others\terms.html:14
 msgid "Terms of Service"
 msgstr "Conditions d'utilisation"
 
-#: .\templates\base.html:156
+#: .\templates\base.html:156 .\templates\others\contact.html:6
+#: .\templates\others\contact.html:12 .\templates\others\privacy_policy.html:55
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: .\templates\base.html:176
+#: .\templates\base.html:177
 msgid "@2025 Trendify. All rights reserved"
 msgstr "@2025 Trendify. Tous droits réservés."
+
+#: .\templates\cart\detail.html:6
+msgid "Your shopping cart"
+msgstr ""
+
+#: .\templates\cart\detail.html:11
+msgid "Review Items"
+msgstr ""
+
+#: .\templates\cart\detail.html:47
+msgid "Order Summary"
+msgstr ""
+
+#: .\templates\cart\detail.html:50
+#, fuzzy
+#| msgid "Total"
+msgid "Subtotal"
+msgstr "Totale"
+
+#: .\templates\cart\detail.html:54
+msgid "Shipping"
+msgstr ""
+
+#: .\templates\cart\detail.html:55
+msgid "Free"
+msgstr ""
+
+#: .\templates\cart\detail.html:64
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: .\templates\cart\detail.html:68
+msgid "Continue Shopping"
+msgstr ""
+
+#: .\templates\cart\detail.html:74
+msgid "Your cart is empty"
+msgstr ""
+
+#: .\templates\cart\detail.html:74
+msgid "Start shopping"
+msgstr ""
 
 #: .\templates\orders\order\create.html:6
 #: .\templates\orders\order\create.html:13
@@ -156,13 +430,10 @@ msgstr "Prénom"
 msgid "Last Name"
 msgstr "Nom de famille"
 
-#: .\templates\orders\order\create.html:30
+#: .\templates\orders\order\create.html:30 .\templates\others\about.html:48
+#: .\templates\others\privacy_policy.html:58 .\templates\others\terms.html:54
 msgid "Email"
 msgstr "E-mail"
-
-#: .\templates\orders\order\create.html:40
-msgid "Address"
-msgstr "Adresse"
 
 #: .\templates\orders\order\create.html:46
 msgid "Residence Place"
@@ -172,21 +443,235 @@ msgstr "Lieu de résidence"
 msgid "Postal Code"
 msgstr "Code Postal"
 
-#: .\templates\orders\order\create.html:62
+#: .\templates\orders\order\create.html:56
 msgid "City"
 msgstr "Ville"
 
-#: .\templates\orders\order\create.html:67
+#: .\templates\orders\order\create.html:61
 msgid "Place Order"
 msgstr "Passer la commande"
 
-#: .\templates\orders\order\create.html:74
+#: .\templates\orders\order\create.html:68
 msgid "Your order"
 msgstr "Votre commande"
 
-#: .\templates\orders\order\create.html:84
-msgid "Total"
-msgstr "Totale"
+#: .\templates\orders\order\pdf.html:90
+msgid "Jammal Gold - Invoice"
+msgstr ""
+
+#: .\templates\orders\order\pdf.html:97
+msgid "Bill to"
+msgstr ""
+
+#: .\templates\orders\order\pdf.html:114
+msgid "Cost"
+msgstr ""
+
+#: .\templates\others\about.html:6 .\templates\others\about.html:12
+#, fuzzy
+#| msgid "About"
+msgid "About Us"
+msgstr "À propos"
+
+#: .\templates\others\about.html:13
+msgid "Bringing comfort and style to your home"
+msgstr ""
+
+#: .\templates\others\about.html:17
+msgid "Our Story"
+msgstr ""
+
+#: .\templates\others\about.html:19
+msgid "Welcome to"
+msgstr ""
+
+#: .\templates\others\about.html:19
+msgid "your go-to destination for premium home furniture and decor"
+msgstr ""
+
+#: .\templates\others\about.html:20
+msgid ""
+"We started with a simple idea — to make beautiful, high-quality furniture "
+"accessible to everyone"
+msgstr ""
+
+#: .\templates\others\about.html:23
+msgid "Our Mission"
+msgstr ""
+
+#: .\templates\others\about.html:25
+msgid "Our mission is to help you turn your house into a home you love"
+msgstr ""
+
+#: .\templates\others\about.html:26
+msgid ""
+"We focus on offering well-crafted, stylish, and durable pieces at affordable "
+"prices"
+msgstr ""
+
+#: .\templates\others\about.html:29
+msgid "Why Choose Us"
+msgstr ""
+
+#: .\templates\others\about.html:31
+msgid "Wide variety of home furniture & accessories"
+msgstr ""
+
+#: .\templates\others\about.html:32
+msgid "High-quality, hand-picked materials"
+msgstr ""
+
+#: .\templates\others\about.html:33
+msgid "Fast and reliable delivery"
+msgstr ""
+
+#: .\templates\others\about.html:34
+msgid "Excellent customer service"
+msgstr ""
+
+#: .\templates\others\about.html:37
+msgid "Meet the Team"
+msgstr ""
+
+#: .\templates\others\about.html:43
+msgid "Get in Touch"
+msgstr ""
+
+#: .\templates\others\about.html:45
+msgid "Have questions or feedback? We'd love to hear from you"
+msgstr ""
+
+#: .\templates\others\contact.html:36
+msgid "send"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:16
+msgid "Welcome to our website"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:17
+msgid ""
+"We value your privacy and are committed to protecting the personal "
+"information you provide when using our home products online store"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:19
+msgid "Information We Collect"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:21
+msgid "Full name"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:22
+#, fuzzy
+#| msgid "Address"
+msgid "Email address"
+msgstr "Adresse"
+
+#: .\templates\others\privacy_policy.html:23
+msgid "Phone number"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:24
+msgid "Shipping address"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:25
+msgid ""
+"Payment information (processed securely via third-party providers like "
+"Stripe; we do not store this information)"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:28
+msgid "How We Use Your Information"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:30
+msgid "Process and ship your orders"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:31
+msgid "Communicate with you regarding your purchases"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:32
+msgid "Improve our services and user experience"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:33
+msgid "Send promotional emails (only with your consent)"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:36
+msgid "Data Protection"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:37
+msgid ""
+"We implement appropriate security measures to protect your personal data "
+"from unauthorized access, modification, or disclosure"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:39
+msgid "Information Sharing"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:40
+msgid "We do"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:40
+msgid "not"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:40
+msgid ""
+"sell, rent, or share your personal information with third parties, except as "
+"needed for payment processing, shipping, or when legally required"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:42
+msgid "Cookies"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:43
+msgid ""
+"We use cookies to enhance your browsing experience and analyze website "
+"usage. You can disable cookies through your browser settings if you prefer"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:45
+msgid "Your Rights"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:47
+msgid "Access your personal data"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:48
+msgid "Request correction or deletion of your data"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:49
+msgid "Unsubscribe from marketing communications at any time"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:52
+msgid "Policy Updates"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:53
+msgid ""
+"We may update this privacy policy occasionally. All updates will be posted "
+"on this page"
+msgstr ""
+
+#: .\templates\others\privacy_policy.html:56
+msgid ""
+"If you have any questions about this privacy policy, feel free to contact us "
+"at"
+msgstr ""
 
 #: .\templates\others\search_results.html:5
 msgid "Search Results"
@@ -206,11 +691,196 @@ msgstr "Produits"
 msgid "No products found matching your search."
 msgstr ""
 
-#: .\templates\shop\product\detail.html:47
-#: .\templates\shop\product\detail.html:49
-#: .\templates\shop\product\detail.html:51
-msgid "Price"
-msgstr "Prix"
+#: .\templates\others\terms.html:15
+msgid "Effective Date"
+msgstr ""
+
+#: .\templates\others\terms.html:17
+msgid "General Information"
+msgstr ""
+
+#: .\templates\others\terms.html:18
+msgid "This website is operated by"
+msgstr ""
+
+#: .\templates\others\terms.html:18
+msgid "Throughout the site, the terms “we”, “us”, and “our” refer to"
+msgstr ""
+
+#: .\templates\others\terms.html:18
+msgid ""
+"We offer this website and its services conditioned upon your acceptance of "
+"all terms and conditions stated here"
+msgstr ""
+
+#: .\templates\others\terms.html:20
+msgid "Eligibility"
+msgstr ""
+
+#: .\templates\others\terms.html:21
+msgid ""
+"By using this site, you confirm that you are at least 18 years old or "
+"accessing the site under the supervision of a parent or legal guardian"
+msgstr ""
+
+#: .\templates\others\terms.html:23
+msgid "Use of the Website"
+msgstr ""
+
+#: .\templates\others\terms.html:25
+msgid "Use the website for lawful purposes only"
+msgstr ""
+
+#: .\templates\others\terms.html:26
+msgid "Do not misuse or attempt to gain unauthorized access to our services"
+msgstr ""
+
+#: .\templates\others\terms.html:27
+msgid "Do not reproduce or exploit any part of the site without permission"
+msgstr ""
+
+#: .\templates\others\terms.html:30
+#, fuzzy
+#| msgid "Product Description"
+msgid "Product Information"
+msgstr "Description du produit"
+
+#: .\templates\others\terms.html:31
+msgid ""
+"We aim to keep product details accurate. However, we reserve the right to "
+"correct errors and update content without notice"
+msgstr ""
+
+#: .\templates\others\terms.html:33
+msgid "Orders and Payments"
+msgstr ""
+
+#: .\templates\others\terms.html:34
+msgid ""
+"All orders are subject to acceptance and availability. We may cancel any "
+"order for any reason. Payments are processed securely via third-party "
+"providers"
+msgstr ""
+
+#: .\templates\others\terms.html:36
+msgid "Shipping and Delivery"
+msgstr ""
+
+#: .\templates\others\terms.html:37
+msgid ""
+"Delivery times are estimates and may vary. We are not responsible for "
+"delivery delays beyond our control"
+msgstr ""
+
+#: .\templates\others\terms.html:39
+msgid "Returns and Refunds"
+msgstr ""
+
+#: .\templates\others\terms.html:40
+msgid "See our"
+msgstr ""
+
+#: .\templates\others\terms.html:40
+msgid "Return Policy"
+msgstr ""
+
+#: .\templates\others\terms.html:40
+msgid "page for full information on returns and refunds"
+msgstr ""
+
+#: .\templates\others\terms.html:42
+msgid "User Accounts"
+msgstr ""
+
+#: .\templates\others\terms.html:43
+msgid ""
+"You are responsible for maintaining the security of your account and "
+"notifying us of any unauthorized use"
+msgstr ""
+
+#: .\templates\others\terms.html:45
+msgid "Limitation of Liability"
+msgstr ""
+
+#: .\templates\others\terms.html:46
+msgid ""
+"We are not liable for any indirect or consequential damages arising from the "
+"use of our site or products"
+msgstr ""
+
+#: .\templates\others\terms.html:48
+msgid "Changes to the Terms"
+msgstr ""
+
+#: .\templates\others\terms.html:49
+msgid ""
+"We may update these Terms at any time. Continued use of the site means you "
+"accept any updates"
+msgstr ""
+
+#: .\templates\others\terms.html:51
+msgid "Contact Information"
+msgstr ""
+
+#: .\templates\others\terms.html:52
+msgid "If you have any questions, please contact us at"
+msgstr ""
+
+#: .\templates\payment\canceled.html:2
+#, fuzzy
+#| msgid "canceled/"
+msgid "Payment canceled"
+msgstr "annulé/"
+
+#: .\templates\payment\canceled.html:5
+msgid "Your payment has not been processed"
+msgstr ""
+
+#: .\templates\payment\canceled.html:6
+msgid "There was a problem processing your payment"
+msgstr ""
+
+#: .\templates\payment\completed.html:3
+msgid "Payment successful"
+msgstr ""
+
+#: .\templates\payment\completed.html:6
+msgid "Your payment was successful"
+msgstr ""
+
+#: .\templates\payment\completed.html:7
+msgid "Your payment has been processed successfully"
+msgstr ""
+
+#: .\templates\payment\process.html:4
+#, fuzzy
+#| msgid "Your order"
+msgid "Pay your order"
+msgstr "Votre commande"
+
+#: .\templates\payment\process.html:8
+msgid "Order summary"
+msgstr ""
+
+#: .\templates\payment\process.html:14
+msgid "Image"
+msgstr ""
+
+#: .\templates\payment\process.html:48
+msgid "Pay Now"
+msgstr ""
+
+#: .\templates\shop\product\categories.html:6
+#, fuzzy
+#| msgid "Category"
+msgid "Shop By Category"
+msgstr "Catégorie"
+
+#: .\templates\shop\product\categories.html:12
+#, fuzzy
+#| msgid "Category"
+msgid "Shop by Category"
+msgstr "Catégorie"
 
 #: .\templates\shop\product\detail.html:54
 msgid "Available Stock"
@@ -236,6 +906,10 @@ msgstr "Catégorie"
 msgid "You might also like:"
 msgstr ""
 
+#: .\templates\shop\product\detail.html:106
+msgid "No similar product"
+msgstr ""
+
 #: .\templates\shop\product\list.html:6
 msgid "Products"
 msgstr "Produits"
@@ -259,6 +933,18 @@ msgstr "Produits en vedette"
 #: .\templates\shop\product\list.html:39
 msgid "no product yet"
 msgstr "pas encore de produit"
+
+#: .\templates\shop\product\list.html:46
+msgid "New Arrivals"
+msgstr ""
+
+#: .\templates\shop\product\list.html:58
+msgid "New"
+msgstr ""
+
+#: .\templates\shop\product\list.html:78
+msgid "No new arrivals yet."
+msgstr ""
 
 #~ msgid "My Shop"
 #~ msgstr "Ma boutique"

@@ -72,7 +72,7 @@
                     {% endif %}
                 </div>
 
-                <button type="submit" class="btn-main w-100 py-2">تسجيل</button>
+                <button type="submit" class="btn-main w-100 py-2">{% trans 'registration' %}</button>
             </form>
 
             {% if messages %}
@@ -86,7 +86,7 @@
             {% endif %}
 
             <div class="mt-4 text-center fs-small">
-                <a href="{% url 'account:login' %}" class="text-decoration-none text-muted">هل لديك حساب؟ <strong>سجّل الدخول</strong></a>
+                <a href="{% url 'account:login' %}" class="text-decoration-none text-muted">{% trans 'Do you have an account? ' %} <strong>{% trans 'Log in ' %}</strong></a>
             </div>
         </div>
     </div>
