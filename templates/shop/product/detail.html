@@ -47,8 +47,6 @@
         <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_vendor }}</p>
       {% elif request.user.is_authenticated and not request.user.is_vendor %}
         <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_customer }}</p>
-      {% else %}
-        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: $..,..</p>
       {% endif %}
 
       <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>

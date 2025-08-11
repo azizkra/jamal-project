@@ -30,9 +30,6 @@
 
                         {% elif request.user.is_authenticated and not request.user.is_vendor %}
                             <p class="text-muted fs-small">${{ product.price_customer }}</p>
-
-                        {% else %}
-                            <p class="text-muted fs-small">$...,..</p>
                         {% endif %}
                     </div>
                 {% empty %}
@@ -67,8 +64,6 @@
                                     ${{ product.price_vendor }}
                                 {% elif request.user.is_authenticated %}
                                     ${{ product.price_customer }}
-                                {% else %}
-                                    $...,..
                                 {% endif %}
                             </p>
                         </div>
