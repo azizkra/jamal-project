@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
+{% block meta %}
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.r3tools.cc/en/account/index_page/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="R3 tools">
+    <meta property="og:description" content="Welcome, everything in one place! Spamming">
+    <meta property="og:image" content="https://shop-tool-bucket-1.s3.us-east-2.amazonaws.com/img/photo_2023-09-05_02-30-38-removebg-preview.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="r3tools.cc">
+    <meta property="twitter:url" content="https://www.r3tools.cc/en/account/index_page/">
+    <meta name="twitter:title" content="R3 tools">
+    <meta name="twitter:description" content="Welcome, everything in one place! Spamming">
+    <meta name="twitter:image" content="https://shop-tool-bucket-1.s3.us-east-2.amazonaws.com/img/photo_2023-09-05_02-30-38-removebg-preview.png">
+{% endblock meta %}
 
 {% block title %}
     {% if category %}{{ category.name }}{% else %}{% trans 'Products' %}{% endif %}

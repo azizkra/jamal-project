@@ -2,6 +2,14 @@
 {% load i18n %}
 {% load static %}
 
+{% block meta %}
+    <meta property="og:url" content="https://www.r3tools.cc/en/tool/10/aws-amazon-smtp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="r3tools | {{ product.name }}">
+    <meta property="og:description" content="{{ product.description|linebreaks }}">
+    <meta property="og:image" content="{{ product.image_1.url }}">
+{% endblock meta %}
+
 {% block title %}
   {{ product.name }}
 {% endblock %}
