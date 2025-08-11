@@ -3,12 +3,22 @@
 {% load static %}
 
 {% block meta %}
-    <meta property="og:url" content="https://www.r3tools.cc/en/tool/10/aws-amazon-smtp/">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="r3tools | {{ product.name }}">
-    <meta property="og:description" content="{{ product.description|linebreaks }}">
-    <meta property="og:image" content="{{ product.image_1.url }}">
+    <meta property="og:site_name" content="Jammal Gold">
+    <meta property="og:title" content="Jammal Gold | {{ tool.tool_name }}">
+    <meta property="og:description" content="{{ tool.description|striptags|truncatechars:150 }}">
+    <meta property="og:image" content="{{ tool.image.url }}">
+    <meta property="og:locale" content="
+    {% if request.LANGUAGE_CODE == 'en' %}en_US
+    {% elif request.LANGUAGE_CODE == 'de' %}de_DE
+    {% elif request.LANGUAGE_CODE == 'nl' %}nl_NL
+    {% elif request.LANGUAGE_CODE == 'fr' %}fr_FR
+    {% else %}en_US
+    {% endif %}
+    ">
 {% endblock meta %}
+
 
 {% block title %}
   {{ product.name }}
