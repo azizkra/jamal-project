@@ -147,11 +147,10 @@ def product_detail(request, id, slug):
         available=True,
         stock__gt=0
     ).exclude(id=product.id)[:4]
-    full_image_url = request.build_absolute_uri(product.image_1.url)  # هنا نعمل الرابط الكامل
+    
 
     return render(request, 'shop/product/detail.html', {
         'product': product,
         'cart_product_form': cart_product_form,
         'similar_products': similar_products,
-        'full_image_url': full_image_url,
     })

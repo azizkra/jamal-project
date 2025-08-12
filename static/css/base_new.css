@@ -328,10 +328,34 @@ a {
 
 .alert-success {
     background-color: #d1e7dd;
-    color: #0f5132;
+    color: #36ac75;
 }
 
 .alert-error, .alert-danger {
     background-color: #f8d7da;
-    color: #842029;
+    color: #a5303a;
 }
+.product-card img {
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.05);
+}
+
+.product-card .card-body {
+    padding: 1rem;
+}
+
+.product-card a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.product-card a:hover {
+    color: var(--primary-color);
+}
+

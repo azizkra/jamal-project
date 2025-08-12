@@ -3,12 +3,11 @@
 {% load static %}
 
 {% block meta %}
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jammal Gold">
     <meta property="og:title" content="Jammal Gold | {{ product.name }}">
-    <meta property="og:description" content="{{ product.description|striptags|truncatechars:150 }}">
-    <meta property="og:image" content="{{ full_image_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{{ product.description|linebreaks }}">
+    <meta property="og:image" content="{{ product.image_1.url }}">
     <meta property="og:locale" content="
       {% if request.LANGUAGE_CODE == 'en' %}en_US
       {% elif request.LANGUAGE_CODE == 'de' %}de_DE

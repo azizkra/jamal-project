@@ -36,20 +36,25 @@
         {% include 'shop/product/categories.html' %}
         <section class="pt-5">
             <h4 class="mb-4 fw-semibold">{% trans 'Featured Products' %}</h4>
-            <div class="row gx-2">
+            <div class="row g-4">
                 {% for product in products %}
-                    <div class="col-md-4">
-                        <a href="{{ product.get_absolute_url }}">
-                            <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="Product 1" class="img-fluid w-100 rounded-2" style="height: 300px; object-fit: cover;">
-                        </a>
-                        <a href="{{ product.get_absolute_url }}" class="d-inline-block mt-3 fw-medium">{{ product.name }}</a>
-                        
-                        {% if request.user.is_authenticated and request.user.is_vendor %}
-                            <p class="text-muted fs-small">${{ product.price_vendor }}</p>
-
-                        {% elif request.user.is_authenticated and not request.user.is_vendor %}
-                            <p class="text-muted fs-small">${{ product.price_customer }}</p>
-                        {% endif %}
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card border-0 shadow-sm h-100 product-card">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
+                                    class="card-img-top"
+                                    alt="{{ product.name }}">
+                            </a>
+                            <div class="card-body text-center">
+                                <a href="{{ product.get_absolute_url }}" class="d-block fw-bold mb-2">{{ product.name }}</a>
+                                
+                                {% if request.user.is_authenticated and request.user.is_vendor %}
+                                    <p class="text-muted fs-5">${{ product.price_vendor }}</p>
+                                {% elif request.user.is_authenticated %}
+                                    <p class="text-muted fs-5">${{ product.price_customer }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 {% empty %}
                     <p class="text-muted fs-small">{% trans 'no product yet' %}</p>
@@ -61,24 +66,21 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="fw-semibold mb-0">{% trans 'New Arrivals' %}</h4>
         </div>
-        <div class="row gx-3 gy-4">
+        <div class="row g-4">
             {% for product in new_arrivals %}
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 product-card">
                         <a href="{{ product.get_absolute_url }}">
                             <div class="position-relative">
                                 <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
-                                    class="card-img-top rounded-top"
                                     alt="{{ product.name }}"
-                                    style="height: 250px; object-fit: cover;">
+                                    class="card-img-top">
                                 <span class="position-absolute top-0 start-0 badge bg-danger m-2">{% trans 'New' %}</span>
                             </div>
                         </a>
-                        <div class="card-body px-2">
-                            <h6 class="card-title mb-1">
-                                <a href="{{ product.get_absolute_url }}" class="text-dark text-decoration-none">{{ product.name }}</a>
-                            </h6>
-                            <p class="text-muted mb-0 fs-small">
+                        <div class="card-body text-center">
+                            <a href="{{ product.get_absolute_url }}" class="d-block fw-bold mb-2">{{ product.name }}</a>
+                            <p class="text-muted fs-5 mb-0">
                                 {% if request.user.is_authenticated and request.user.is_vendor %}
                                     ${{ product.price_vendor }}
                                 {% elif request.user.is_authenticated %}
@@ -93,6 +95,7 @@
             {% endfor %}
         </div>
     </section>
+
 
     
 {% endblock %}
