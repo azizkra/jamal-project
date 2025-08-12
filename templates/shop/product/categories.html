@@ -1,24 +1,37 @@
-{% extends 'base.html' %}
-{% load static %}
+{% load i18n static %}
+<section class="my-5">
+    <h3 class="mb-4 fw-semibold">{% trans 'Shop by Category' %}</h3>
+    <div class="category-scroll d-flex gap-3 overflow-auto pb-2">
+        {% for c in categories %}
+            <a href="{{ c.get_absolute_url }}" 
+               class="category-item border p-3 d-flex flex-column align-items-center text-center rounded-2 text-decoration-none fw-semibold text-dark {% if category.slug == c.slug %}active{% endif %}">
+                <img src="{{ c.image_1.url }}" width="60" height="60" class="rounded-3 mb-2" alt="{{ c.name }}">
+                <span>{{ c.name }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
 
-
-{% block title %}
-    {% trans 'Shop By Category' %}
-{% endblock title %}
-
-
-{% block content %}
-    <section>
-        <h3 class="my-4 fw-semibold">{% trans 'Shop by Category' %}</h3>
-        <ul class="m-0 p-0 list-unstyled d-flex gap-3 flex-wrap">
-            {% for c in categories %}
-                <li {% if category.slug == c.slug %}class="selected"{% endif %}class="h-100">
-                    <a href="{{ c.get_absolute_url }}"  class="border p-3 d-flex gap-3 rounded-2 align-items-center text-decoration-none fw-semibold text-dark">
-                        <img src="{{ c.image_1.url }}" width="40" height="40" class="rounded-3" alt="{{ c.name }}">
-                        <span>{{ c.name }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
-{% endblock content %}
+<style>
+.category-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+.category-item {
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+.category-item.active,
+.category-item:hover {
+    background-color: #dfdfdf;
+}
+@media (min-width: 768px) {
+    .category-scroll {
+        overflow-x: visible;
+        flex-wrap: wrap;
+    }
+    .category-item {
+        min-width: auto;
+    }
+}
+</style>
