@@ -3,30 +3,20 @@
 {% load static %}
 
 {% block meta %}
-    <meta name="description" content="{{ product.description|truncatewords:20 }}">
-
-    <!-- Open Graph Meta Tags (Facebook, WhatsApp) -->
-    <meta property="og:type" content="product">
-    <meta property="og:title" content="{{ product.name }}">
-    <meta property="og:description" content="{{ product.description|truncatewords:20 }}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    {% if product.image_1 %}
-        <meta property="og:image" content="{{ request.build_absolute_uri(product.image_1.url) }}">
-    {% else %}
-        <meta property="og:image" content="{{ request.build_absolute_uri(static('images/category/books.png')) }}">
-    {% endif %}
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ product.name }}">
-    <meta name="twitter:description" content="{{ product.description|truncatewords:20 }}">
-    {% if product.image_1 %}
-        <meta name="twitter:image" content="{{ request.build_absolute_uri(product.image_1.url) }}">
-    {% else %}
-        <meta name="twitter:image" content="{{ request.build_absolute_uri(static('img/no_image.png')) }}">
-    {% endif %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jammal Gold">
+    <meta property="og:title" content="Jammal Gold | {{ product.name }}">
+    <meta property="og:description" content="{{ product.description|striptags|truncatechars:150 }}">
+    <meta property="og:image" content="{{ product.image_1.url }}">
+    <meta property="og:locale" content="
+      {% if request.LANGUAGE_CODE == 'en' %}en_US
+      {% elif request.LANGUAGE_CODE == 'de' %}de_DE
+      {% elif request.LANGUAGE_CODE == 'nl' %}nl_NL
+      {% elif request.LANGUAGE_CODE == 'fr' %}fr_FR
+      {% else %}en_US
+      {% endif %}
+      ">
 {% endblock meta %}
 
 
