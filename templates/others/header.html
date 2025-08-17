@@ -1,0 +1,126 @@
+{% load i18n static %}
+
+<header>
+  <nav class="navbar navbar-expand-lg border-bottom px-md-4">
+    <div class="container-fluid">
+      <!-- الشعار -->
+      <a class="navbar-brand me-5" href="/">
+        <img class="me-2" src="{% static 'images/logo/logo.png' %}" alt="logo">
+        <span class="fw-semibold">{% trans 'Jammal Gold' %}</span>
+      </a>
+
+      <!-- زر القائمة -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- المحتوى القابل للطي -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- روابط القائمة -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-3">
+          <li class="nav-item">
+            <a class="fs-small fw-medium nav-link active" aria-current="page" href="#">{% trans 'Home' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="fs-small fw-medium nav-link" href="#">{% trans 'Shop' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="fs-small fw-medium nav-link" href="{% url 'shop:about' %}">{% trans 'About' %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="fs-small fw-medium nav-link" href="{% url 'shop:contact' %}">{% trans 'Contact' %}</a>
+          </li>
+        </ul>
+
+        <!-- عناصر التحكم (بحث/لغة/سلة/وضع/مستخدم)
+             ملاحظة: عمودي في الموبايل، أفقي في الشاشات الكبيرة -->
+        <div class="controls d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-3 w-100 w-lg-auto">
+
+          <!-- البحث: يأخذ عرضًا كاملاً في الموبايل، عادي في الكبير -->
+          <form class="position-relative order-1 order-lg-1 w-100 w-lg-auto flex-grow-1 flex-lg-grow-0"
+                role="search" action="{% url 'shop:product_search' %}" method="get">
+            <input class="form-control me-2 input-search bg-grey-lighter"
+                   type="search" name="q" placeholder="Search" aria-label="Search" />
+            <button class="btn-search" type="submit">
+              <img src="{% static 'images/icons/search.svg' %}" alt="search">
+            </button>
+          </form>
+
+          <!-- لغة + سلة -->
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+
+          <div class="d-flex gap-2 order-2 order-lg-2">
+            <!-- اللغة: position-static لمنع القص داخل الـ navbar -->
+            <div class="dropdown position-static">
+              <button class="btn btn-icon dropdown-toggle" type="button" id="languageDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
+              <!-- على الموبايل تفتح يمين الزر (داخل الشاشة) / على الكبير تصطف لليمين -->
+              <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end"
+                  aria-labelledby="languageDropdown">
+                {% for language in languages %}
+                  <li>
+                    <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                      {% csrf_token %}
+                      <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                      <input name="language" type="hidden" value="{{ language.code }}">
+                      <button type="submit"
+                              class="dropdown-item {% if language.code == LANGUAGE_CODE %} active {% endif %}">
+                        {{ language.name_local }}
+                      </button>
+                    </form>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <a href="{% url 'cart:cart_detail' %}" class="btn btn-icon">
+              <img src="{% static 'images/icons/cart.svg' %}" alt="cart">
+            </a>
+          </div>
+
+          <!-- وضع الليل/النهار: لا يكون بعرض كامل على الشاشات الكبيرة -->
+          <button id="themeToggle" class="btn btn-secondary order-3 order-lg-3 w-30 w-lg-auto">
+            {% if current_theme == 'dark' %}🌞{% else %}🌙{% endif %}
+          </button>
+
+          <!-- المستخدم: position-static + محاذاة قائمة منسدلة مناسبة حسب المقاس -->
+          <div class="dropdown position-static order-4 order-lg-4">
+            <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'images/users/user1.png' %}" class="rounded-pill" width="40" height="40" alt="User">
+            </a>
+            <!-- على الموبايل: start (تفتح داخل الشاشة) / على الكبير: end -->
+            <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end text-end"
+                aria-labelledby="userDropdown">
+              {% if request.user.is_authenticated %}
+                {% if request.user.is_vendor %}
+                  <li><a class="dropdown-item" href="{% url 'account:vendor_profile' %}">البروفايل (تاجر)</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" href="{% url 'account:customer_profile' %}">البروفايل (زبون)</a></li>
+                {% endif %}
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <form method="post" action="{% url 'account:account_logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
+                      <i class="bi bi-box-arrow-right"></i> تسجيل الخروج
+                    </button>
+                  </form>
+                </li>
+              {% else %}
+                <li><a class="dropdown-item" href="{% url 'account:login' %}">تسجيل الدخول</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'account:register' %}">إنشاء حساب</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div> <!-- /controls -->
+      </div> <!-- /collapse -->
+    </div>
+  </nav>
+</header>

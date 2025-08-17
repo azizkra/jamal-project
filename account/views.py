@@ -1,10 +1,13 @@
 from django.contrib import messages
 from orders.models import OrderItem
+from .models import CustomUser
 from .form import CustomUserRegistrainForm
-from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 
@@ -66,3 +69,18 @@ def customer_profile(request):
     # purchased_products = request.user.purchased_products.all()
     return render(request, 'account/customer_profile.html', {'purchased_products': purchased_products})
 
+
+@login_required
+@csrf_exempt
+def set_theme(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            theme = data.get("theme")
+            if theme in dict(CustomUser.THEME_CHOICES):
+                request.user.theme_preference = theme
+                request.user.save()
+                return JsonResponse({"status": "success"})
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=400)
+    return JsonResponse({"status": "error"}, status=400)

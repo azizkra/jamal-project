@@ -48,7 +48,7 @@
             <div class="card p-4 shadow-sm small-order-box">
                 <div class="d-flex justify-content-between mb-2">
                     <span class="text-muted">{% trans 'Subtotal' %}</span>
-                    <span>${{ cart.get_total_price }}</span>
+                    <span class="dark-color-txt">${{ cart.get_total_price }}</span>
                 </div>
                 <div class="d-flex justify-content-between mb-2">
                     <span class="text-muted">{% trans 'Shipping' %}</span>
@@ -56,8 +56,8 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between fw-bold fs-5">
-                    <span>{% trans 'Total' %}</span>
-                    <span>${{ cart.get_total_price }}</span>
+                    <span class="dark-color-txt">{% trans 'Total' %}</span>
+                    <span class="dark-color-txt">${{ cart.get_total_price }}</span>
                 </div>
 
                 <div class="mt-4 d-grid">

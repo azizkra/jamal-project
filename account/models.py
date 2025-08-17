@@ -17,3 +17,14 @@ class CustomUser(AbstractUser):
         related_name='customuser_set',
         blank=True
     )
+    THEME_CHOICES = [
+        ('light', 'Light'),
+        ('dark', 'Dark'),
+    ]
+    theme_preference = models.CharField(
+        max_length=10,
+        choices=THEME_CHOICES,
+        default='light',
+        blank=True,
+        null=True
+    )

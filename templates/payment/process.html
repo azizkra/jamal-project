@@ -11,11 +11,11 @@
     <table class="table mb-0 align-middle">
       <thead>
         <tr>
-          <th>{% trans 'Image' %}</th>
-          <th>{% trans 'Product' %}</th>
-          <th>{% trans 'Price' %}</th>
-          <th>{% trans 'Quantity' %}</th>
-          <th>{% trans 'Total' %}</th>
+          <th class="dark-color-txt">{% trans 'Product' %}</th>
+          <th class="dark-color-txt">{% trans 'Price' %}</th>
+          <th class="dark-color-txt">{% trans 'Quantity' %}</th>
+          <th class="dark-color-txt">{% trans 'Total' %}</th>
+          <th class="dark-color-txt">{% trans 'Image' %}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,16 +28,16 @@
                               {% static 'img/no_image.png' %}
                           {% endif %}" alt="product">
             </td>
-            <td>{{ item.product.name }}</td>
-            <td class="text-muted fs-small px-0">${{ item.price }}</td>
-            <td class="text-muted fs-small px-0">{{ item.quantity }}</td>
+            <td class="dark-color-txt">{{ item.product.name }}</td>
+            <td class="dark-color-txt fs-small px-0">${{ item.price }}</td>
+            <td class="dark-color-txt fs-small px-0">{{ item.quantity }}</td>
             
-            <td class="text-muted fs-small px-0">${{ item.get_cost }}</td>
+            <td class="dark-color-txt  px-0">${{ item.get_cost }}</td>
           </tr>
         {% endfor %}
         <tr class="total">
-          <td colspan="4" class="text-muted fs-small px-0 text-end">{% trans 'Total' %}</td>
-          <td class="num fw-bold">${{ order.get_total_cost }}</td>
+          <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Total' %}</td>
+          <td class="num text-success fw-bold">${{ order.get_total_cost }}</td>
         </tr>
       </tbody>
     </table>

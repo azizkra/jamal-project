@@ -1,5 +1,5 @@
-{% load i18n %}
-{% load static %}
+
+{% load i18n static %}
  <!DOCTYPE html>
  <html>
   <head>
@@ -32,103 +32,8 @@
     
     </style>
   </head>
-  <body>
-    <header>
-        <nav class="navbar navbar-expand-lg border-bottom px-md-4">
-            <div class="container-fluid">
-                <a class="navbar-brand me-5" href="/">
-                    <img class="me-2" src="{% static 'images/logo/logo.png' %}" alt="logo">
-                    <span class="fw-semibold">{% trans 'Jammal Gold' %}</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-3">
-                        <li class="nav-item">
-                            <a class="fs-small fw-medium nav-link active" aria-current="page" href="#">{% trans 'Home' %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="fs-small fw-medium nav-link" href="#">{% trans 'Shop' %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="fs-small fw-medium nav-link" href="{% url 'shop:about' %}">{% trans 'About' %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="fs-small fw-medium nav-link" href="{% url 'shop:contact' %}">{% trans 'Contact' %}</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex align-items-center gap-4">
-                        <form class="position-relative" role="search" action="{% url 'shop:product_search' %}" method="get">
-                            <input class="form-control me-2 input-search bg-grey-lighter" type="search" name="q" placeholder="Search" aria-label="Search" />
-                            <button class="btn-search" type="submit"><img src="{% static 'images/icons/search.svg' %}" alt="search"></button>
-                        </form>
-                        <div class="ms-auto d-flex gap-2">
-                            <!-- Dropdown for language selection -->
-                            
-                            {% get_current_language as LANGUAGE_CODE %}
-                            {% get_available_languages as LANGUAGES %}
-                            {% get_language_info_list for LANGUAGES as languages %}
-
-                            <div class="dropdown">
-                                <button class="btn btn-icon dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    🌐
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                                    {% for language in languages %}
-                                        <li>
-                                            <form action="{% url 'set_language' %}" method="post" class="d-inline">
-                                                {% csrf_token %}
-                                                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
-                                                <input name="language" type="hidden" value="{{ language.code }}">
-                                                <button type="submit" class="dropdown-item {% if language.code == LANGUAGE_CODE %} active {% endif %}">
-                                                    {{ language.name_local }}
-                                                </button>
-                                            </form>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <a href="{% url 'cart:cart_detail' %}" class="btn btn-icon"><img src="{% static 'images/icons/cart.svg' %}" alt="cart"></a>
-                        </div>
-
-                        <div class="dropdown">
-                            <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{% static 'images/users/user1.png' %}" class="rounded-pill" width="40" height="40" alt="User">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="userDropdown">
-
-                                {% if request.user.is_authenticated %}
-                                {% if request.user.is_vendor %}
-                                    <li><a class="dropdown-item" href="{% url 'account:vendor_profile' %}">البروفايل (تاجر)</a></li>
-                                {% else %}
-                                    <li><a class="dropdown-item" href="{% url 'account:customer_profile' %}">البروفايل (زبون)</a></li>
-                                {% endif %}
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <form method="post" action="{% url 'account:account_logout' %}" class="d-inline">
-                                            {% csrf_token %}
-                                            <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
-                                                <i class="bi bi-box-arrow-right"></i> تسجيل الخروج
-                                            </button>
-                                        </form>
-                                    </li>
-                            {% else %}
-                                <li><a class="dropdown-item" href="{% url 'account:login' %}">تسجيل الدخول</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'account:register' %}">إنشاء حساب</a></li>
-                            {% endif %}
-                            </ul>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <body class="{% if request.user.is_authenticated and request.user.theme_preference == 'dark' %}dark-mode{% endif %}">
+    {% include 'others/header.html' %}
     
         {% if messages %}
             <div class="container mt-3">
@@ -198,6 +103,34 @@
             });
         }, 5000);
     </script>
+
+    <script>
+        document.getElementById("themeToggle").addEventListener("click", function() {
+            let isDark = document.body.classList.contains("dark-mode");
+            let newTheme = isDark ? "light" : "dark";
+
+            // تبديل الكلاس
+            document.body.classList.toggle("dark-mode");
+
+            // تحديث النص في الزر مباشرة
+            if (newTheme === "dark") {
+                this.innerHTML = "🌞";
+            } else {
+                this.innerHTML = "🌙";
+            }
+
+            // حفظ التغيير في السيرفر
+            fetch("{% url 'account:set_theme' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({theme: newTheme})
+            });
+        });
+    </script>
+
 
 
   </body>
