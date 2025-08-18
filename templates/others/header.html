@@ -45,7 +45,7 @@
             <input class="form-control me-2 input-search bg-grey-lighter"
                    type="search" name="q" placeholder="Search" aria-label="Search" />
             <button class="btn-search" type="submit">
-              <img src="{% static 'images/icons/search.svg' %}" alt="search">
+              <i data-lucide="search"></i>
             </button>
           </form>
 
@@ -58,7 +58,7 @@
             <!-- اللغة: position-static لمنع القص داخل الـ navbar -->
             <div class="dropdown position-static">
               <button class="btn btn-icon dropdown-toggle" type="button" id="languageDropdown"
-                      data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
+                      data-bs-toggle="dropdown" aria-expanded="false"><i data-lucide="globe"></i></button>
               <!-- على الموبايل تفتح يمين الزر (داخل الشاشة) / على الكبير تصطف لليمين -->
               <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end"
                   aria-labelledby="languageDropdown">
@@ -79,7 +79,7 @@
             </div>
 
             <a href="{% url 'cart:cart_detail' %}" class="btn btn-icon">
-              <img src="{% static 'images/icons/cart.svg' %}" alt="cart">
+              <i data-lucide="shopping-bag"></i>
             </a>
           </div>
 
@@ -90,7 +90,7 @@
             {% else %}
               <i data-lucide="moon"></i>
             {% endif %}
-        </button>
+          </button>
 
           <!-- المستخدم: position-static + محاذاة قائمة منسدلة مناسبة حسب المقاس -->
           <div class="dropdown position-static order-4 order-lg-4">

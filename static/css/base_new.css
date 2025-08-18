@@ -107,6 +107,7 @@ body.dark-mode .bg-grey-lighter{
 }
 body.dark-mode .btn-icon {
     background-color: #495057 !important;
+    color: #fff;
 }
 
 
@@ -568,4 +569,7 @@ color: #fff;
 .thumb-image.selected {
   border: 2px solid #28a745;
   transform: scale(1.05);
+}
+body.dark-mode .btn-search{
+    color: #fff;
 }
