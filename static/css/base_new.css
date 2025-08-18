@@ -425,10 +425,22 @@ body.dark-mode .product-card .card-body {
 body.dark-mode .product-card img {
     filter: brightness(0.85);
 }
+body.dark-mode .order-create{
+    background: #333 !important;
+    border: 0;
+}
+body.dark-mode .order-info{
+    background: #333 !important;
+    color: #fff;
 
+}
 
 body.dark-mode .dropdown-menu.show{
     background-color : #6c757d;
+}
+body.dark-mode .dark-color.active {
+    color: #333 !important;
+    font-weight: 500;
 }
 
 .product-card a {
