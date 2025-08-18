@@ -89,6 +89,11 @@
         
         <p class="text-muted">{% trans '@2025 Trendify. All rights reserved' %}.</p>
     </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
     <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
     <script>
         // Fade-out تلقائي بعد 5 ثوانٍ
@@ -105,31 +110,36 @@
     </script>
 
     <script>
-        document.getElementById("themeToggle").addEventListener("click", function() {
-            let isDark = document.body.classList.contains("dark-mode");
-            let newTheme = isDark ? "light" : "dark";
+    lucide.createIcons(); // لتوليد الأيقونات أول ما تحمل الصفحة
 
-            // تبديل الكلاس
-            document.body.classList.toggle("dark-mode");
+    document.getElementById("themeToggle").addEventListener("click", function() {
+        let isDark = document.body.classList.contains("dark-mode");
+        let newTheme = isDark ? "light" : "dark";
 
-            // تحديث النص في الزر مباشرة
-            if (newTheme === "dark") {
-                this.innerHTML = "🌞";
-            } else {
-                this.innerHTML = "🌙";
-            }
+        // تبديل الكلاس
+        document.body.classList.toggle("dark-mode");
 
-            // حفظ التغيير في السيرفر
-            fetch("{% url 'account:set_theme' %}", {
-                method: "POST",
-                headers: {
-                    "X-CSRFToken": "{{ csrf_token }}",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({theme: newTheme})
-            });
+        // غيّر الأيقونة حسب الوضع الجديد
+        if (newTheme === "dark") {
+            this.innerHTML = '<i data-lucide="sun"></i>';
+        } else {
+            this.innerHTML = '<i data-lucide="moon"></i>';
+        }
+
+        // أعد رسم الأيقونات بعد تغيير الـ innerHTML
+        lucide.createIcons();
+
+        // حفظ التفضيل في السيرفر
+        fetch("{% url 'account:set_theme' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ theme: newTheme })
         });
-    </script>
+    });
+</script>
 
 
 

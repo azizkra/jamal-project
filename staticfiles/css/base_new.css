@@ -558,3 +558,14 @@ color: #fff;
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
+.product-main-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-main-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+}
+.thumb-image.selected {
+  border: 2px solid #28a745;
+  transform: scale(1.05);
+}

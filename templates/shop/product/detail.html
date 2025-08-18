@@ -10,7 +10,6 @@
     <meta property="og:image" content="{{ product.image_1.url }}">
 {% endblock meta %}
 
-
 {% block title %}
   {{ product.name }}
 {% endblock %}
@@ -21,31 +20,38 @@
     
     <!-- ✅ الصور - يسار -->
     <div class="col-lg-6 mb-4">
-      <div class="border rounded p-2 mb-3">
-        <img id="mainImage" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
-             alt="{{ product.name }}" class="img-fluid rounded w-100" style="max-height: 500px; object-fit: cover;">
+      <div class="position-relative border rounded shadow-sm overflow-hidden" style="max-height: 500px;">
+        <img id="mainImage"
+            src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
+            alt="{{ product.name }}"
+            class="img-fluid w-100 product-main-img"
+            style="object-fit: contain; cursor: zoom-in;">
       </div>
 
       <!-- ✅ الصور المصغرة -->
-      <div class="d-flex flex-wrap gap-2">
+      <div class="d-flex flex-wrap gap-2 mt-3">
         {% if product.image_1 %}
-          <img src="{{ product.image_1.url }}" alt="Main" class="img-thumbnail thumb-image"
+          <img src="{{ product.image_1.url }}" alt="Main"
+              class="img-thumbnail thumb-image"
               style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
         {% endif %}
         {% if product.image_2 %}
-          <img src="{{ product.image_2.url }}" alt="Image 2" class="img-thumbnail thumb-image"
+          <img src="{{ product.image_2.url }}" alt="Image 2"
+              class="img-thumbnail thumb-image"
               style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
         {% endif %}
         {% if product.image_3 %}
-          <img src="{{ product.image_3.url }}" alt="Image 3" class="img-thumbnail thumb-image"
+          <img src="{{ product.image_3.url }}" alt="Image 3"
+              class="img-thumbnail thumb-image"
               style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
         {% endif %}
         {% if product.image_4 %}
-          <img src="{{ product.image_4.url }}" alt="Image 4" class="img-thumbnail thumb-image"
+          <img src="{{ product.image_4.url }}" alt="Image 4"
+              class="img-thumbnail thumb-image"
               style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
         {% endif %}
       </div>
-    </div> <!-- ✅ إغلاق عمود الصور -->
+    </div> <!-- ⬅️ إغلاق عمود الصور هنا -->
 
     <!-- ✅ التفاصيل - يمين -->
     <div class="col-lg-6">
@@ -60,19 +66,16 @@
 
       <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>
 
-      
       {% if request.user.is_authenticated %}
         <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
           {% csrf_token %}
           {{ cart_product_form }}
           <button class="btn-main fs-small px-3 py-2 mt-2">{% trans 'Add to Cart' %}</button>
         </form>
-      
       {% else %}
         <p>{% trans 'login for more!' %}</p>
       {% endif %}
         
-
       <div class="mt-5">
         <h4 class="fw-semibold mb-2">{% trans 'Product Description' %}</h4>
         <p class="text-muted">{{ product.description }}</p>
@@ -126,8 +129,6 @@
   </div>
 </div>
 {% endif %}
-
-
 </main>
 
 <!-- ✅ سلوك تغيير الصورة بالـ JavaScript -->
@@ -146,4 +147,41 @@
     });
   });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const thumbnails = document.querySelectorAll(".thumb-image");
+  const mainImage = document.getElementById("mainImage");
+
+  // ✅ تغيير الصورة عند الضغط على thumbnail
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      mainImage.src = thumb.src;
+      thumbnails.forEach(t => t.classList.remove("selected"));
+      thumb.classList.add("selected");
+    });
+  });
+
+  // ✅ Lightbox عند الضغط على الصورة الرئيسية
+  mainImage.addEventListener("click", () => {
+    const lightbox = document.createElement("div");
+    lightbox.style.position = "fixed";
+    lightbox.style.top = "0";
+    lightbox.style.left = "0";
+    lightbox.style.width = "100%";
+    lightbox.style.height = "100%";
+    lightbox.style.background = "rgba(0,0,0,0.9)";
+    lightbox.style.display = "flex";
+    lightbox.style.alignItems = "center";
+    lightbox.style.justifyContent = "center";
+    lightbox.style.cursor = "zoom-out";
+    lightbox.innerHTML = `<img src="${mainImage.src}" style="max-width:90%; max-height:90%; border-radius: 10px;">`;
+
+    document.body.appendChild(lightbox);
+
+    lightbox.addEventListener("click", () => lightbox.remove());
+  });
+});
+</script>
+
 {% endblock %}

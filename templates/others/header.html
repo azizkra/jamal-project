@@ -85,8 +85,12 @@
 
           <!-- وضع الليل/النهار: لا يكون بعرض كامل على الشاشات الكبيرة -->
           <button id="themeToggle" class="btn btn-secondary order-3 order-lg-3 w-30 w-lg-auto">
-            {% if current_theme == 'dark' %}🌞{% else %}🌙{% endif %}
-          </button>
+            {% if current_theme == 'dark' %}
+              <i data-lucide="sun"></i>
+            {% else %}
+              <i data-lucide="moon"></i>
+            {% endif %}
+        </button>
 
           <!-- المستخدم: position-static + محاذاة قائمة منسدلة مناسبة حسب المقاس -->
           <div class="dropdown position-static order-4 order-lg-4">
