@@ -89,32 +89,44 @@
 
   <!-- ✅ المنتجات المشابهة -->
   {% if similar_products %}
-  <div class="mb-5 ps-3">
-    <h6 class="fw-semibold mb-3">{% trans 'You might also like:' %}</h6>
-    <div class="row row-cols-2 row-cols-md-4 g-3">
+  <div class="my-5">
+    <h4 class="fw-bold mb-4 text-center">{% trans '✨ New Arrivals / You might also like' %}</h4>
+    
+    <div class="row row-cols-2 row-cols-md-4 g-4">
       {% for similar in similar_products %}
         <div class="col">
-          <a href="{{ similar.get_absolute_url }}" class="text-decoration-none text-dark">
-            <div class="card h-100">
+          <a href="{{ similar.get_absolute_url }}" class="text-decoration-none">
+            <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+              
+              <!-- صورة المنتج -->
+              <div class="position-relative">
               <img src="{% if similar.image_1 %}{{ similar.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
-                  alt="{{ similar.name }}" class="card-img-top"  style="height: 200px; object-fit: cover; width: 100%;">
-              <div class="card-body p-2">
-                <p class="card-title fs-small mb-1">{{ similar.name|truncatechars:40 }}</p>
-                {% if request.user.is_authenticated and request.user.is_vendor %}
-                  <p class="card-title fs-small mb-1">${{ similar.price_vendor }}</p>
-                {% else %}
-                  <p class="card-title fs-small mb-1">${{ similar.price_customer }}</p>
-                {% endif %}
-              </div>
+                  alt="{{ similar.name }}" 
+                  class="card-img-top rounded-top-4" 
+                  style="height: 220px; object-fit: cover; width: 100%;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-2 px-3 py-2 fs-small shadow">New</span>
             </div>
-          </a>
-        </div>
-      {% empty %}
-        <p>{% trans 'No similar product' %}</p>
-      {% endfor %}
-    </div>
+            
+            <!-- تفاصيل المنتج -->
+            <div class="card-body text-center">
+              <p class="dark-color-txt fw-semibold mb-1">{{ similar.name|truncatechars:35 }}</p>
+              
+              {% if request.user.is_authenticated and request.user.is_vendor %}
+                <p class="text-success fw-bold mb-0">${{ similar.price_vendor }}</p>
+              {% else %}
+                <p class="text-success fw-bold mb-0">${{ similar.price_customer }}</p>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {% empty %}
+      <p class="dark-color-txt text-center">{% trans 'No similar product' %}</p>
+    {% endfor %}
   </div>
-  {% endif %}
+</div>
+{% endif %}
+
 
 </main>
 

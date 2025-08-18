@@ -49,9 +49,9 @@
                                 <a href="{{ product.get_absolute_url }}" class="d-block fw-bold mb-2">{{ product.name }}</a>
                                 
                                 {% if request.user.is_authenticated and request.user.is_vendor %}
-                                    <p class="text-muted fs-5">${{ product.price_vendor }}</p>
+                                    <p class="text-success text-muted fs-5">${{ product.price_vendor }}</p>
                                 {% elif request.user.is_authenticated %}
-                                    <p class="text-muted fs-5">${{ product.price_customer }}</p>
+                                    <p class="text-success text-muted fs-5">${{ product.price_customer }}</p>
                                 {% endif %}
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                         </a>
                         <div class="card-body text-center">
                             <a href="{{ product.get_absolute_url }}" class="d-block fw-bold mb-2">{{ product.name }}</a>
-                            <p class="text-muted fs-5 mb-0">
+                            <p class="text-success text-muted fs-5 mb-0">
                                 {% if request.user.is_authenticated and request.user.is_vendor %}
                                     ${{ product.price_vendor }}
                                 {% elif request.user.is_authenticated %}

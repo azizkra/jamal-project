@@ -1,24 +1,25 @@
 :root {
-    --color-black-dark: #141414;
     --color-black-medium: #242424;
     --color-grey-medium: #757575;
     --color-grey-light: #E0E0E0;
     --color-grey-lighter: #F2F2F2;
     --color-grey-pale: #E5E8EB;
     --color-grey-muted: #C4C4C4;
-    --background-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
 
     --bg-color: #ffffff;
     --text-color: #1a1a1a;
     --primary-color: #3f51b5;
     --card-bg: #f9f9f9;
+
+    --background-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 
-[data-theme="dark"] {
+/* ================== الوضع الداكن ================== */
+body.dark-mode {
     --bg-color: #121212;
     --text-color: #e0e0e0;
     --primary-color: #90caf9;
-    --card-bg: #1e1e1e;
+    --card-bg: #333;
 }
 
 body {
@@ -27,8 +28,26 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+body.dark-mode a {
+    color: #ffffff !important;
+}
+body.dark-mode .dark-color-txt{
+    color: #fff !important;
 }
 
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* ================== البطاقات والأقسام ================== */
 .card, .section, .rounded-2 {
     background-color: var(--card-bg);
     transition: background-color 0.3s;
@@ -36,14 +55,19 @@ body {
 
 a {
     color: var(--primary-color);
+    text-decoration: none;
 }
 
 .fs-small {
     font-size: 14px !important;
 }
 
-.text-muted {
-    color: var(--color-grey-medium) !important;
+body.dark-mode .text-muted {
+    color: #6e6e6e !important;
+}
+
+body.dark-mode .table{
+    --bs-table-bg: #343a40 !important;
 }
 
 .breadcrumb-item a {
@@ -60,6 +84,9 @@ a {
 .bg-grey-lighter,
 .bg-grey-lighter:focus {
     background-color: var(--color-grey-lighter);
+}
+body.dark-mode .bg-grey-lighter{
+    background-color: #495057;
 }
 
 .input-search {
@@ -78,9 +105,13 @@ a {
 .btn-icon {
     background-color: var(--color-grey-lighter) !important;
 }
+body.dark-mode .btn-icon {
+    background-color: #495057 !important;
+}
+
 
 .btn-main {
-    background-color: var(--color-black-dark);
+    background-color: var(--color-black-medium);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -90,6 +121,27 @@ a {
     cursor: pointer;
     transition: background-color 0.2s;
     margin-top: 10px;
+}
+body.dark-mode .btn-main {
+    background-color : #5993bb;
+}
+body.dark-mode .btn-main:hover{
+    background-color : #5993bb;
+}
+
+.text-success{
+    color: rgb(43 255 157) !important;
+}
+body.dark-mode .text-success{
+    color: rgb(43 255 157) !important;
+}
+body.dark-mode .btn-outline-dark{
+    color: #ffffff !important;
+    background-color: #6c757d !important;
+}
+.btn-outline-dark:hover{
+    color: #ffffff !important;
+    background-color: #6c757d !important;
 }
 
 .btn-main:hover {
@@ -227,6 +279,12 @@ a {
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+body.dark-mode .policy-container{
+    background-color: #333;
+}
+body.dark-mode .form-control{
+    background-color: #b5b5b5;
+}
 
 .language-form button.dropdown-item {
     width: 100%;
@@ -335,19 +393,42 @@ a {
     background-color: #f8d7da;
     color: #a5303a;
 }
+
+/* تحديث بطاقات المنتجات لتتغير مع الوضع */
+.product-card {
+    background-color: var(--card-bg);
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 6px;
+    overflow: hidden;
+}
 .product-card img {
+    filter: brightness(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
     height: 350px;
     object-fit: cover;
-    border-radius: 12px 12px 0 0;
-    transition: transform 0.3s ease;
+    border-radius: 6px 6px 0 0;
 }
-
 .product-card img:hover {
     transform: scale(1.05);
 }
-
 .product-card .card-body {
     padding: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+body.dark-mode .product-card .card-body {
+    background-color: #333;
+    color: #fff;
+    font-weight: 500;
+}
+body.dark-mode .product-card img {
+    filter: brightness(0.85);
+}
+
+
+body.dark-mode .dropdown-menu.show{
+    background-color : #6c757d;
 }
 
 .product-card a {
@@ -359,3 +440,109 @@ a {
     color: var(--primary-color);
 }
 
+body[data-theme="dark"] .product-card img {
+    filter: brightness(0.85); /* يعطي تأثير داكن على الصور */
+}
+
+/* يمنع التفاف العناصر على الشاشات الكبيرة */
+@media (min-width: 992px) {
+  .navbar .controls { flex-wrap: nowrap; }
+  .navbar .controls form { min-width: 240px; }
+}
+
+@media (max-width: 991.98px) {
+  .navbar .controls > * { width: 13%; }
+  .navbar .dropdown .dropdown-menu { position: absolute; }
+}
+/* ================== تحسينات عامة ================== */
+.fs-small { font-size: 14px !important; }
+.text-muted { color: #6e6e6e !important; }
+.breadcrumb-item a { color: var(--color-grey-medium); font-weight: 500; }
+.breadcrumb-item.active { color: var(--color-black-medium); font-weight: 500; }
+
+/* ================== الوضع المتجاوب ================== */
+@media (max-width: 768px) {
+    .btn-main { width: 100%; font-size: 16px; }
+}
+#themeToggle { white-space: nowrap; }
+
+/* ====== الإضافات من الملف الثاني ====== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: normal;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align: left;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+}
+
+tbody tr:nth-child(odd) { background: #f2f7fd8c; }
+tbody tr.subtotal { background: #ccc; }
+
+thead th, tbody tr.total {
+    background: #5993bb;
+    color: #fff;
+    font-weight: bold;
+}
+
+table.cart { margin-bottom: 40px; }
+table.cart img { width: 180px; }
+tbody td.num { text-align: right; }
+
+ul.errorlist {
+   float: left;
+   color: #ff0000;
+   clear: both;
+   font-size: 13px;
+   margin: 0 0 0 10px;
+   padding: 10px 0;
+}
+
+/* عناصر إضافية إذا كانت مستخدمة */
+#sidebar { width: 220px; padding: 30px 20px 0 0; float: left; }
+#sidebar ul { margin: 0; padding: 0; }
+#sidebar ul li { margin: 0; list-style: none; padding: 10px 14px; }
+#sidebar ul li a { display: block; }
+#sidebar ul li.selected { background: #5993bb; border-radius: 4px; }
+#sidebar ul li.selected a { color: #fff; }
+
+.product-list .item { width: 25%; padding: 10px 20px 10px 0; float: left; text-align: center; line-height: 1.2; }
+.product-list .item img { width: 100%; margin-bottom: 8px; }
+
+.product-detail { text-align: justify; }
+.product-detail .price { color: #333; font-size: 28px; font-weight: bold; }
+.product-detail img { width: 40%; float: left; padding: 0 20px 20px 0; }
+.product-detail h1 { margin-bottom: 0; }
+.product-detail h2 { margin-top: 10px; }
+
+.order-info { float: right; width: 300px; background: #efefef; padding: 10px 20px; color: #333; border-bottom: 4px solid #5993bb; }
+.order-info h3 { color: #5993bb; }
+.order-info ul li { margin: 0; padding: 0; font-size: 14px; }
+.order-info p { font-weight: bold; float: right; }
+.order-info span { float: right; }
+
+.neg { color: #dc1616; }
+
+body.dark-mode .txt-about-dark{
+color: #fff;
+}
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
