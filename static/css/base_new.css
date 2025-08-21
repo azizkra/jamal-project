@@ -444,6 +444,11 @@ body.dark-mode .dark-color.active {
     font-weight: 500;
 }
 
+body.dark-mode .form-select-dark{
+    background: #333 !important;
+    color: #fff !important;
+}
+
 .product-card a {
     color: var(--text-color);
     text-decoration: none;
@@ -464,7 +469,7 @@ body[data-theme="dark"] .product-card img {
 }
 
 @media (max-width: 991.98px) {
-  .navbar .controls > * { width: 13%; }
+  .navbar .controls > * { width: 13%; margin-left: 0 !important;}
   .navbar .dropdown .dropdown-menu { position: absolute; }
 }
 /* ================== تحسينات عامة ================== */
@@ -573,3 +578,44 @@ color: #fff;
 body.dark-mode .btn-search{
     color: #fff;
 }
+/* البحث */
+.input-search {
+  padding-left: 40px;
+  width: 220px;   /* حجم ثابت لجميع الأجهزة */
+  border-radius: 20px;
+}
+
+/* زر البحث */
+.btn-search {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* في الموبايل يظل نفس الحجم */
+@media (max-width: 768px) {
+  .input-search {
+    width: 180px;  /* عرض مناسب للشاشة الصغيرة */
+    margin-left: inherit;
+  }
+}
+/* بحث ياخذ العرض الكامل على جميع الأجهزة */
+.navbar .controls {
+    width: 100% !important;
+}
+
+/* على الشاشات الكبيرة نعيد ضبطه */
+@media (min-width: 992px) {
+    .navbar .controls {
+        width: auto !important;
+        margin-left: auto; /* يخليه يمين */
+    }
+    .navbar .controls form {
+        width: 250px; /* حجم ثابت للبحث */
+    }
+}
+

@@ -73,7 +73,7 @@
                 {% csrf_token %}
                 <div class="mb-3" style="max-width: 300px;">
                     <label class="form-label">{% trans 'Theme' %}</label>
-                    <select class="form-select" id="themeSelect">
+                    <select class="form-select form-select-dark" id="themeSelect">
                         <option value="light" {% if user.theme_preference == 'light' %}selected{% endif %}>{% trans 'Light' %}</option>
                         <option value="dark" {% if user.theme_preference == 'dark' %}selected{% endif %}>{% trans 'Dark' %}</option>
                     </select>
