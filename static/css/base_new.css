@@ -469,7 +469,7 @@ body[data-theme="dark"] .product-card img {
 }
 
 @media (max-width: 991.98px) {
-  .navbar .controls > * { width: 13%; margin-left: 0 !important;}
+  .navbar .controls > * { width: 19%; margin-left: 0 !important;}
   .navbar .dropdown .dropdown-menu { position: absolute; }
 }
 /* ================== تحسينات عامة ================== */

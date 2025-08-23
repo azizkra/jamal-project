@@ -2,186 +2,121 @@
 {% load i18n %}
 {% load static %}
 
-{% block meta %}
-    <meta property="og:url" content="https://www.r3tools.cc/en/tool/10/aws-amazon-smtp/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Jammal Gold | {{ product.name }}">
-    <meta property="og:description" content="{{ product.description|linebreaks }}">
-    <meta property="og:image" content="{{ product.image_1.url }}">
-{% endblock meta %}
-
 {% block title %}
   {{ product.name }}
 {% endblock %}
 
 {% block content %}
 <main class="container mt-4">
-  <section class="row product-section">
-    
-    <!-- ✅ الصور - يسار -->
-    <div class="col-lg-6 mb-4">
-      <div class="position-relative border rounded shadow-sm overflow-hidden" style="max-height: 500px;">
-        <img id="mainImage"
-            src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
-            alt="{{ product.name }}"
-            class="img-fluid w-100 product-main-img"
-            style="object-fit: contain; cursor: zoom-in;">
-      </div>
 
-      <!-- ✅ الصور المصغرة -->
-      <div class="d-flex flex-wrap gap-2 mt-3">
+  <!-- ✅ سلايدر الصور -->
+  <section class="mb-5">
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+      
+      <!-- الصور الرئيسية -->
+      <div class="carousel-inner border rounded shadow-sm">
         {% if product.image_1 %}
-          <img src="{{ product.image_1.url }}" alt="Main"
-              class="img-thumbnail thumb-image"
-              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+          <div class="carousel-item active">
+            <img src="{{ product.image_1.url }}" class="d-block w-100 zoomable" alt="Image 1" style="object-fit: contain; max-height: 600px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="{{ product.image_1.url }}">
+          </div>
         {% endif %}
         {% if product.image_2 %}
-          <img src="{{ product.image_2.url }}" alt="Image 2"
-              class="img-thumbnail thumb-image"
-              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+          <div class="carousel-item">
+            <img src="{{ product.image_2.url }}" class="d-block w-100 zoomable" alt="Image 2" style="object-fit: contain; max-height: 600px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="{{ product.image_2.url }}">
+          </div>
         {% endif %}
         {% if product.image_3 %}
-          <img src="{{ product.image_3.url }}" alt="Image 3"
-              class="img-thumbnail thumb-image"
-              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+          <div class="carousel-item">
+            <img src="{{ product.image_3.url }}" class="d-block w-100 zoomable" alt="Image 3" style="object-fit: contain; max-height: 600px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="{{ product.image_3.url }}">
+          </div>
         {% endif %}
         {% if product.image_4 %}
-          <img src="{{ product.image_4.url }}" alt="Image 4"
-              class="img-thumbnail thumb-image"
-              style="width: 70px; height: 70px; cursor: pointer; object-fit: cover;">
+          <div class="carousel-item">
+            <img src="{{ product.image_4.url }}" class="d-block w-100 zoomable" alt="Image 4" style="object-fit: contain; max-height: 600px; cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="{{ product.image_4.url }}">
+          </div>
         {% endif %}
       </div>
-    </div> <!-- ⬅️ إغلاق عمود الصور هنا -->
 
-    <!-- ✅ التفاصيل - يمين -->
-    <div class="col-lg-6">
-      <h2 class="fw-bold mb-2">{{ product.name }}</h2>
-      <p class="text-muted mb-3">Brand: Luxe Threads | Style: Evening Gown | Color: Midnight Blue</p>
+      <!-- أزرار التنقل -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
 
-      {% if request.user.is_authenticated and request.user.is_vendor %}
-        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_vendor }}</p>
-      {% elif request.user.is_authenticated and not request.user.is_vendor %}
-        <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_customer }}</p>
+    <!-- ✅ الصور المصغّرة -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+      {% if product.image_1 %}
+        <img src="{{ product.image_1.url }}" alt="Thumb 1" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="0">
       {% endif %}
-
-      <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>
-
-      {% if request.user.is_authenticated %}
-        <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
-          {% csrf_token %}
-          {{ cart_product_form }}
-          <button class="btn-main fs-small px-3 py-2 mt-2">{% trans 'Add to Cart' %}</button>
-        </form>
-      {% else %}
-        <p>{% trans 'login for more!' %}</p>
+      {% if product.image_2 %}
+        <img src="{{ product.image_2.url }}" alt="Thumb 2" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="1">
       {% endif %}
-        
-      <div class="mt-5">
-        <h4 class="fw-semibold mb-2">{% trans 'Product Description' %}</h4>
-        <p class="text-muted">{{ product.description }}</p>
-      </div>
-
-      <div class="mt-4">
-        {% trans 'Category' %}:
-        <a href="{{ product.category.get_absolute_url }}" class="text-decoration-none">
-          {{ product.category }}
-        </a>
-      </div>
+      {% if product.image_3 %}
+        <img src="{{ product.image_3.url }}" alt="Thumb 3" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="2">
+      {% endif %}
+      {% if product.image_4 %}
+        <img src="{{ product.image_4.url }}" alt="Thumb 4" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="3">
+      {% endif %}
     </div>
   </section>
 
-  <!-- ✅ المنتجات المشابهة -->
-  {% if similar_products %}
-  <div class="my-5">
-    <h4 class="fw-bold mb-4 text-center">{% trans '✨ New Arrivals / You might also like' %}</h4>
-    
-    <div class="row row-cols-2 row-cols-md-4 g-4">
-      {% for similar in similar_products %}
-        <div class="col">
-          <a href="{{ similar.get_absolute_url }}" class="text-decoration-none">
-            <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
-              
-              <!-- صورة المنتج -->
-              <div class="position-relative">
-              <img src="{% if similar.image_1 %}{{ similar.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
-                  alt="{{ similar.name }}" 
-                  class="card-img-top rounded-top-4" 
-                  style="height: 220px; object-fit: cover; width: 100%;">
-              <span class="badge bg-success position-absolute top-0 end-0 m-2 px-3 py-2 fs-small shadow">New</span>
-            </div>
-            
-            <!-- تفاصيل المنتج -->
-            <div class="card-body text-center">
-              <p class="dark-color-txt fw-semibold mb-1">{{ similar.name|truncatechars:35 }}</p>
-              
-              {% if request.user.is_authenticated and request.user.is_vendor %}
-                <p class="text-success fw-bold mb-0">${{ similar.price_vendor }}</p>
-              {% else %}
-                <p class="text-success fw-bold mb-0">${{ similar.price_customer }}</p>
-              {% endif %}
-            </div>
-          </div>
-        </a>
+  <!-- ✅ مودال للتكبير -->
+  <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-transparent border-0">
+        <button type="button" class="btn-close ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        <img id="zoomImage" src="" class="img-fluid rounded shadow-lg" alt="Zoomed Image">
       </div>
-    {% empty %}
-      <p class="dark-color-txt text-center">{% trans 'No similar product' %}</p>
-    {% endfor %}
+    </div>
   </div>
-</div>
-{% endif %}
+
+  <!-- ✅ تفاصيل المنتج -->
+  <section class="product-details text-center text-md-start">
+    <h2 class="fw-bold mb-2">{{ product.name }}</h2>
+    <p class="text-muted mb-3">Brand: Luxe Threads | Style: Evening Gown | Color: Midnight Blue</p>
+
+    {% if request.user.is_authenticated and request.user.is_vendor %}
+      <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_vendor }}</p>
+    {% elif request.user.is_authenticated and not request.user.is_vendor %}
+      <p class="h4 text-success fw-bold mb-3">{% trans 'Price' %}: ${{ product.price_customer }}</p>
+    {% endif %}
+
+    <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>
+
+    {% if request.user.is_authenticated %}
+      <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_product_form }}
+        <button class="btn-main fs-small px-4 py-2 mt-2">{% trans 'Add to Cart' %}</button>
+      </form>
+    {% else %}
+      <p>{% trans 'login for more!' %}</p>
+    {% endif %}
+
+    <div class="mt-5">
+      <h4 class="fw-semibold mb-2">{% trans 'Product Description' %}</h4>
+      <p class="text-muted">{{ product.description }}</p>
+    </div>
+
+    <div class="mt-4">
+      {% trans 'Category' %}:
+      <a href="{{ product.category.get_absolute_url }}" class="text-decoration-none">
+        {{ product.category }}
+      </a>
+    </div>
+  </section>
 </main>
 
-<!-- ✅ سلوك تغيير الصورة بالـ JavaScript -->
+<!-- ✅ سكربت لتغيير الصورة داخل المودال -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const thumbnails = document.querySelectorAll(".thumb-image");
-    const mainImage = document.getElementById("mainImage");
-
-    thumbnails.forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        mainImage.src = thumb.src;
-        
-        thumbnails.forEach(t => t.classList.remove("selected"));
-        thumb.classList.add("selected");
-      });
-    });
+  const zoomModal = document.getElementById('zoomModal');
+  zoomModal.addEventListener('show.bs.modal', function (event) {
+    let img = event.relatedTarget; 
+    let src = img.getAttribute('data-img');
+    document.getElementById('zoomImage').src = src;
   });
 </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const thumbnails = document.querySelectorAll(".thumb-image");
-  const mainImage = document.getElementById("mainImage");
-
-  // ✅ تغيير الصورة عند الضغط على thumbnail
-  thumbnails.forEach(thumb => {
-    thumb.addEventListener("click", () => {
-      mainImage.src = thumb.src;
-      thumbnails.forEach(t => t.classList.remove("selected"));
-      thumb.classList.add("selected");
-    });
-  });
-
-  // ✅ Lightbox عند الضغط على الصورة الرئيسية
-  mainImage.addEventListener("click", () => {
-    const lightbox = document.createElement("div");
-    lightbox.style.position = "fixed";
-    lightbox.style.top = "0";
-    lightbox.style.left = "0";
-    lightbox.style.width = "100%";
-    lightbox.style.height = "100%";
-    lightbox.style.background = "rgba(0,0,0,0.9)";
-    lightbox.style.display = "flex";
-    lightbox.style.alignItems = "center";
-    lightbox.style.justifyContent = "center";
-    lightbox.style.cursor = "zoom-out";
-    lightbox.innerHTML = `<img src="${mainImage.src}" style="max-width:90%; max-height:90%; border-radius: 10px;">`;
-
-    document.body.appendChild(lightbox);
-
-    lightbox.addEventListener("click", () => lightbox.remove());
-  });
-});
-</script>
-
 {% endblock %}
