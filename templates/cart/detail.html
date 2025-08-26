@@ -1,6 +1,9 @@
+
+
+
+
 {% extends "base.html" %}
 {% load static i18n %}
-
 
 {% block title %}
     {% trans 'Your shopping cart' %}
@@ -15,34 +18,41 @@
             {% for item in cart %}
                 {% with product=item.product %}
                 <li class="cart-item d-flex flex-wrap align-items-center gap-3 py-3 border-bottom">
+                    <!-- صورة المنتج -->
                     <a href="{{ product.get_absolute_url }}">
                         <img width="80" height="80" class="rounded-2 border img-fluid"
                              src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
                              alt="{{ product.name }}">
                     </a>
+
+                    <!-- تفاصيل المنتج -->
                     <div class="flex-grow-1">
                         <h6 class="mb-1">{{ product.name }}</h6>
-                        <div class="text-muted small">{% trans 'Quantity' %}: {{ item.quantity }}</div>
                         <div class="text-muted small">Size: M, Color: Black</div>
                     </div>
-                    <div class="d-flex flex-column flex-sm-row align-items-start gap-2">
+
+                    <!-- التحكم بالكمية + تحديث / حذف -->
+                    <div class="d-flex flex-column flex-sm-row align-items-start gap-2">            
                         <form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-flex gap-2">
                             {% csrf_token %}
                             {{ item.update_quantity_form.quantity }}
                             {{ item.update_quantity_form.override }}
-                            <input type="submit" value="Update" class="btn btn-sm btn-outline-dark">
+                            <input type="submit" value="{% trans 'Update' %}" class="btn btn-sm btn-dark">
                         </form>
                         <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                             {% csrf_token %}
-                            <input type="submit" value="Remove" class="btn btn-sm btn-outline-danger">
+                            <input type="submit" value="{% trans 'Remove' %}" class="btn btn-sm btn-outline-danger">
                         </form>
                     </div>
+
+                    <!-- السعر -->
                     <div class="ms-auto fw-bold text-nowrap">${{ item.price }}</div>
                 </li>
                 {% endwith %}
             {% endfor %}
         </ul>
 
+        <!-- ملخص الطلب -->
         <section class="mt-5">
             <h4 class="fw-bold mb-3">{% trans 'Order Summary' %}</h4>
             <div class="card p-4 shadow-sm small-order-box">
@@ -61,18 +71,38 @@
                 </div>
 
                 <div class="mt-4 d-grid">
-                    <a href="{% url 'orders:order_create' %}" class="btn btn-dark btn-lg btn-main">{% trans 'Proceed to Checkout' %}</a>
+                    <a href="{% url 'orders:order_create' %}" class="btn btn-dark btn-lg btn-main">
+                        {% trans 'Proceed to Checkout' %}
+                    </a>
                 </div>
 
                 <div class="text-center mt-3">
-                    <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary btn-sm">← {% trans 'Continue Shopping' %}</a>
+                    <a href="{% url 'shop:product_list' %}" class="btn btn-outline-secondary btn-sm">
+                        ← {% trans 'Continue Shopping' %}
+                    </a>
                 </div>
             </div>
         </section>
     {% else %}
         <div class="bg-light border rounded p-4 text-center mt-5">
-            <p class="mb-0">{% trans 'Your cart is empty' %}. <a href="{% url 'shop:product_list' %}" class="btn btn-outline-primary btn-sm ms-1">{% trans 'Start shopping' %}</a></p>
+            <p class="mb-0">{% trans 'Your cart is empty' %}. 
+                <a href="{% url 'shop:product_list' %}" class="btn btn-outline-primary btn-sm ms-1">
+                    {% trans 'Start shopping' %}
+                </a>
+            </p>
         </div>
     {% endif %}
 </main>
+
+<!-- Script للتحكم في الكمية -->
+<script>
+function changeQty(button, delta) {
+    const input = button.parentElement.querySelector('input[type=number]');
+    let value = parseInt(input.value) || 1;
+    const min = parseInt(input.min) || 1;
+    const max = parseInt(input.max) || 99;
+    value = Math.min(Math.max(value + delta, min), max);
+    input.value = value;
+}
+</script>
 {% endblock %}

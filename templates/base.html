@@ -110,36 +110,55 @@
     </script>
 
     <script>
-    lucide.createIcons(); // لتوليد الأيقونات أول ما تحمل الصفحة
+        lucide.createIcons(); // لتوليد الأيقونات أول ما تحمل الصفحة
 
-    document.getElementById("themeToggle").addEventListener("click", function() {
-        let isDark = document.body.classList.contains("dark-mode");
-        let newTheme = isDark ? "light" : "dark";
+        document.getElementById("themeToggle").addEventListener("click", function() {
+            let isDark = document.body.classList.contains("dark-mode");
+            let newTheme = isDark ? "light" : "dark";
 
-        // تبديل الكلاس
-        document.body.classList.toggle("dark-mode");
+            // تبديل الكلاس
+            document.body.classList.toggle("dark-mode");
 
-        // غيّر الأيقونة حسب الوضع الجديد
-        if (newTheme === "dark") {
-            this.innerHTML = '<i data-lucide="sun"></i>';
-        } else {
-            this.innerHTML = '<i data-lucide="moon"></i>';
-        }
+            // غيّر الأيقونة حسب الوضع الجديد
+            if (newTheme === "dark") {
+                this.innerHTML = '<i data-lucide="sun"></i>';
+            } else {
+                this.innerHTML = '<i data-lucide="moon"></i>';
+            }
 
-        // أعد رسم الأيقونات بعد تغيير الـ innerHTML
-        lucide.createIcons();
+            // أعد رسم الأيقونات بعد تغيير الـ innerHTML
+            lucide.createIcons();
 
-        // حفظ التفضيل في السيرفر
-        fetch("{% url 'account:set_theme' %}", {
-            method: "POST",
-            headers: {
-                "X-CSRFToken": "{{ csrf_token }}",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ theme: newTheme })
+            // حفظ التفضيل في السيرفر
+            fetch("{% url 'account:set_theme' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ theme: newTheme })
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        function changeQty(value) {
+            let input = document.getElementById("quantityInput");
+            let current = parseInt(input.value);
+            let min = parseInt(input.min);
+            let max = parseInt(input.max);
+
+            let newValue = current + value;
+            if (newValue >= min && newValue <= max) {
+                input.value = newValue;
+
+                // شغل الأنيميشن
+                input.classList.add("animate");
+                setTimeout(() => input.classList.remove("animate"), 300);
+            }
+        }
+    </script>
+
+
 
 
 

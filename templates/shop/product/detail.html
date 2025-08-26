@@ -87,11 +87,37 @@
     <p class="text-muted">{% trans 'Available Stock' %}: {{ product.stock }}</p>
 
     {% if request.user.is_authenticated %}
-      <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
+      <!-- <form class="mt-4" action="{% url 'cart:cart_add' product.id %}" method="post">
         {% csrf_token %}
         {{ cart_product_form }}
         <button class="btn-main fs-small px-4 py-2 mt-2">{% trans 'Add to Cart' %}</button>
+      </form>  -->
+      <form class="mt-4 d-flex align-items-center gap-3" action="{% url 'cart:cart_add' product.id %}" method="post">
+          {% csrf_token %}
+
+          <!-- صندوق الكمية -->
+          <div class="quantity-container d-flex align-items-center">
+              <button type="button" class="btn btn-outline-dark btn-quantity" onclick="changeQty(-1)">-</button>
+              <input 
+                  type="number" 
+                  id="quantityInput" 
+                  name="quantity" 
+                  class="form-control quantity-input text-center mx-2" 
+                  value="1" 
+                  min="1" 
+                  max="{{ product.stock }}">
+              <button type="button" class="btn btn-outline-dark btn-quantity" onclick="changeQty(1)">+</button>
+          </div>
+
+          <input type="hidden" name="override" value="false">
+
+          <!-- زر إضافة للسلة -->
+          <button class="btn-main fs-small px-4 py-2">
+              {% trans 'Add to Cart' %}
+          </button>
       </form>
+
+
     {% else %}
       <p>{% trans 'login for more!' %}</p>
     {% endif %}
@@ -120,3 +146,4 @@
   });
 </script>
 {% endblock %}
+
