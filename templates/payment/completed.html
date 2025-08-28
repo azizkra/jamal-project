@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% load i18n static %}
+
 {% block title %}{% trans 'Payment successful' %}{% endblock %}
 
 {% block content %}
-  <h1>{% trans 'Your payment was successful' %}</h1>
-  <p>{% trans 'Your payment has been processed successfully' %}.</p>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="text-center p-4 shadow rounded bg-white card-payment" style="max-width: 500px; width: 100%;">
+      <div class="mb-3">
+          <span style="font-size: 60px; color: green;">✔️</span>
+      </div>
+      <h1 class="mb-3 text-success">{% trans 'Your payment was successful' %}</h1>
+      <p class="text-muted">{% trans 'Your payment has been processed successfully' %}.</p>
+      <a href="{% url 'shop:product_list' %}" class="btn btn-success mt-3">
+        {% trans 'Continue Shopping' %}
+      </a>
+  </div>
+</div>
 {% endblock %}

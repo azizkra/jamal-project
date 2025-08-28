@@ -280,8 +280,11 @@ body.dark-mode .btn-outline-dark{
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-body.dark-mode .policy-container{
+body.dark-mode .policy-container .card-payment{
     background-color: #333;
+}
+body.dark-mode .card-payment{
+    background-color: #333 !important;
 }
 body.dark-mode .form-control{
     background-color: #b5b5b5;
@@ -332,6 +335,7 @@ body.dark-mode .form-control{
     .table th {
         font-size: 13px;
         padding: 0.5rem;
+        text-align: center;
     }
 
     .btn-main {
@@ -351,12 +355,12 @@ body.dark-mode .form-control{
     box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
-.cart-item {
+/* .cart-item {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
-}
+} */
 
 @media (max-width: 576px) {
     .cart-item {
@@ -378,6 +382,17 @@ body.dark-mode .form-control{
         margin: 0 auto !important;
         padding: 1rem !important;
     }
+}
+@media (max-width: 991.98px) {
+  .cart-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+  }
+
+  .cart-item {
+      flex-wrap: nowrap;
+      min-width: 600px;
+  }
 }
 
 .alert {
@@ -668,6 +683,53 @@ body.dark-mode .bg-light{
 
 .quantity-input.animate {
   animation: bounce 0.3s ease;
+}
+
+
+/* ✅ جعل الصور المصغرة على سطر واحد مع سكرول أفقي */
+.thumbnail-container {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scroll للجوال */
+  scrollbar-width: thin;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.thumb-img {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+/* الحاوية الأساسية */
+.cart-scroll {
+    overflow-x: auto;     /* تفعيل السحب الأفقي */
+    -webkit-overflow-scrolling: touch; /* سكرول ناعم على الموبايل */
+}
+
+/* عناصر السطر */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;   /* مهم عشان يظلوا في سطر واحد */
+    min-width: 600px; /* منع النزول لسطر جديد */
+}
+.table-scroll {
+    overflow-x: auto;          /* يضيف سكرول أفقي */
+    -webkit-overflow-scrolling: touch; /* سكرول ناعم للموبايل */
+}
+
+.table-scroll table {
+    min-width: 600px; /* عرض أدنى للجدول عشان ما يتكسر */
 }
 
 

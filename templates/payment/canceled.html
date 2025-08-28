@@ -4,6 +4,16 @@
 {% block title %}{% trans 'Payment canceled' %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Your payment has not been processed' %}</h1>
-    <p>{% trans 'There was a problem processing your payment' %}.</p>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="text-center p-4 shadow rounded bg-white card-payment" style="max-width: 500px; width: 100%;">
+      <div class="mb-3">
+          <span style="font-size: 60px; color: red;">❌</span>
+      </div>
+      <h1 class="mb-3 text-danger">{% trans 'Your payment has not been processed' %}</h1>
+      <p class="text-muted">{% trans 'There was a problem processing your payment' %}.</p>
+      <a href="{% url 'shop:product_list' %}" class="btn btn-outline-danger mt-3">
+        {% trans 'Try Again' %}
+      </a>
+  </div>
+</div>
 {% endblock %}

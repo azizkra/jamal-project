@@ -46,21 +46,26 @@
       </button>
     </div>
 
-    <!-- ✅ الصور المصغّرة -->
-    <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+    <!-- ✅ الصور المصغّرة مع سكرول جانبي للجوال -->
+    <div class="thumbnail-container d-flex gap-2 mt-3">
       {% if product.image_1 %}
-        <img src="{{ product.image_1.url }}" alt="Thumb 1" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="0">
+        <img src="{{ product.image_1.url }}" alt="Thumb 1" class="img-thumbnail thumb-img"
+            data-bs-target="#productCarousel" data-bs-slide-to="0">
       {% endif %}
       {% if product.image_2 %}
-        <img src="{{ product.image_2.url }}" alt="Thumb 2" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="1">
+        <img src="{{ product.image_2.url }}" alt="Thumb 2" class="img-thumbnail thumb-img"
+            data-bs-target="#productCarousel" data-bs-slide-to="1">
       {% endif %}
       {% if product.image_3 %}
-        <img src="{{ product.image_3.url }}" alt="Thumb 3" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="2">
+        <img src="{{ product.image_3.url }}" alt="Thumb 3" class="img-thumbnail thumb-img"
+            data-bs-target="#productCarousel" data-bs-slide-to="2">
       {% endif %}
       {% if product.image_4 %}
-        <img src="{{ product.image_4.url }}" alt="Thumb 4" class="img-thumbnail" style="width: 80px; height: 80px; cursor: pointer;" data-bs-target="#productCarousel" data-bs-slide-to="3">
+        <img src="{{ product.image_4.url }}" alt="Thumb 4" class="img-thumbnail thumb-img"
+            data-bs-target="#productCarousel" data-bs-slide-to="3">
       {% endif %}
     </div>
+
   </section>
 
   <!-- ✅ مودال للتكبير -->

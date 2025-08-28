@@ -7,41 +7,43 @@
 <section class="container my-5">
   <h1 class="mb-4 fw-bold">{% trans 'Order summary' %}</h1>
 
-  <div class="table-responsive">  <!-- لجعل الجدول قابل للتمرير في الشاشات الصغيرة -->
-    <table class="table mb-0 align-middle">
-      <thead>
-        <tr>
-          <th class="dark-color-txt">{% trans 'Image' %}</th>
-          <th class="dark-color-txt">{% trans 'Name' %}</th>
-          <th class="dark-color-txt">{% trans 'Price' %}</th>
-          <th class="dark-color-txt">{% trans 'Quantity' %}</th>
-          <th class="dark-color-txt">{% trans 'Total' %}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in order.items.all %}
+  <div class="table-responsive">
+    <div class="table-scroll">
+      <table class="table mb-0 align-middle">
+        <thead>
           <tr>
-            <td>
-              <img class="rounded-2" width="70" height="70" src="{% if item.product.image_1 %}
-                              {{ item.product.image_1.url }}
-                          {% else %}
-                              {% static 'img/no_image.png' %}
-                          {% endif %}" alt="product">
-            </td>
-            <td class="dark-color-txt">{{ item.product.name }}</td>
-            <td class="dark-color-txt fs-small px-0">${{ item.price }}</td>
-            <td class="dark-color-txt fs-small px-0">{{ item.quantity }}</td>
-            
-            <td class="dark-color-txt  px-0">${{ item.get_cost }}</td>
+            <th class="dark-color-txt">{% trans 'Image' %}</th>
+            <th class="dark-color-txt">{% trans 'Name' %}</th>
+            <th class="dark-color-txt">{% trans 'Price' %}</th>
+            <th class="dark-color-txt">{% trans 'Quantity' %}</th>
+            <th class="dark-color-txt">{% trans 'Total' %}</th>
           </tr>
-        {% endfor %}
-        <tr class="total">
-          <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Total' %}</td>
-          <td class="num text-success fw-bold">${{ order.get_total_cost }}</td>
-        </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for item in order.items.all %}
+            <tr>
+              <td>
+                <img class="rounded-2" width="70" height="70" src="{% if item.product.image_1 %}
+                                {{ item.product.image_1.url }}
+                            {% else %}
+                                {% static 'img/no_image.png' %}
+                            {% endif %}" alt="product">
+              </td>
+              <td class="dark-color-txt">{{ item.product.name }}</td>
+              <td class="dark-color-txt fs-small px-0">${{ item.price }}</td>
+              <td class="dark-color-txt fs-small px-0">{{ item.quantity }}</td>
+              <td class="dark-color-txt px-0">${{ item.get_cost }}</td>
+            </tr>
+          {% endfor %}
+          <tr class="total">
+            <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Total' %}</td>
+            <td class="num text-success fw-bold">${{ order.get_total_cost }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
 
   <form action="{% url 'payment:process' %}" method="post" class="text-right mt-4">
     {% csrf_token %}
