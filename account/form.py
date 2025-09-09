@@ -1,29 +1,39 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from django_countries.fields import CountryField
+from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 
 
 class CustomUserRegistrainForm(UserCreationForm):
     is_vendor = forms.BooleanField(required=False, label=_('Are you a merchant?'))
     tax_number = forms.CharField(required=False, label=_('Tax number'))
-
+    # ✅ الخطوة 1: إضافة حقل البلد
+    # نستخدم CountryField الذي يأتي من مكتبة django-countries
+    # to_field_name='code' سيضمن حفظ رمز البلد (مثل 'BE') في قاعدة البيانات
+    country = CountryField(blank_label=_('Select country')).formfield(
+        label=_('Country'),
+        widget=forms.Select(attrs={'class': 'form-select'}) # استخدام form-select ليتناسب مع Bootstrap
+    )
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'is_vendor', 'tax_number', 'password1', 'password2']
+        fields = ['username', 'email', 'is_vendor', 'tax_number','country', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # إضافة كلاس bootstrap لكل الحقول
+        # تعديل الكلاسات لـ Bootstrap
         for field_name, field in self.fields.items():
-            if field.widget.attrs.get('class'):
-                field.widget.attrs['class'] += ' form-control'
+            # تخطي حقل البلد لأننا قمنا بتعيين الكلاس الخاص به بالفعل
+            if field_name == 'country':
+                continue
+            
+            if isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs['class'] = 'form-check-input'
             else:
-                # لجعل checkbox يظهر بشكل صحيح، يمكننا التعامل معه بشكل منفصل
-                if isinstance(field.widget, forms.CheckboxInput):
-                    field.widget.attrs['class'] = 'form-check-input'
-                else:
-                    field.widget.attrs['class'] = 'form-control'
+                # إضافة form-control إلى الحقول الأخرى
+                current_class = field.widget.attrs.get('class', '')
+                if 'form-control' not in current_class:
+                    field.widget.attrs['class'] = f'{current_class} form-control'.strip()
 
     def clean(self):
         cleaned_data = super().clean()

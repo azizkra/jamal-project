@@ -2,7 +2,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 from shop.models import Product
 from django.conf import settings
-
+from decimal import Decimal
 # Create your models here.
 
 class Order(models.Model):
@@ -47,6 +47,18 @@ class Order(models.Model):
             path = '/'
         return  f'https://dashboard.stripe.com{path}payments/{self.stripe_id}'
     
+    # ✅ا: حساب الإجمالي بدون ضريبة
+    def get_total_cost_without_tax(self):
+        # تستدعي دالة get_base_cost() من كل OrderItem
+        return sum(item.get_base_cost() for item in self.items.all())
+    
+     #✅ ا حساب إجمالي الضريبة فقط
+    def get_total_tax(self):
+        # تحسب الفرق بين الإجمالي مع الضريبة والإجمالي بدونها
+        return self.get_total_cost() - self.get_total_cost_without_tax()
+
+    
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
@@ -56,7 +68,34 @@ class OrderItem(models.Model):
     def __str__(self):
         return str(self.id)
     
+    def get_tax_rate(self):
+        """
+        تحديد نسبة الضريبة بناءً على بلد المستخدم ونوع المنتج.
+        """
+        user = self.order.user
+        # تحقق من أن المستخدم مسجل وله بلد محدد
+        if user and user.is_authenticated and user.is_vendor and hasattr(user, 'country') and user.country == "BE":  # مستخدم داخل بلجيكا
+            if self.product.tax_type == 'food':
+                return Decimal('0.06')  # 6% للمواد الغذائية
+            elif self.product.tax_type == 'home':
+                return Decimal('0.21')  # 21% للأدوات المنزلية
+        
+        # إذا كان المستخدم خارج بلجيكا أو غير مسجل، لا توجد ضريبة
+        return Decimal('0.00')
+
     def get_cost(self):
+        """
+        حساب التكلفة الإجمالية للمنتج شاملة الضريبة.
+        """
+        base_cost = self.price * self.quantity
+        tax_rate = self.get_tax_rate()
+        tax = base_cost * tax_rate
+        return base_cost + tax
+
+    def get_base_cost(self):
+        """
+        حساب التكلفة الأساسية للمنتج (بدون ضريبة).
+        """
         return self.price * self.quantity
 
 

@@ -29,6 +29,11 @@ class Category(TranslatableModel):
     
 
 class Product(TranslatableModel):
+    TAX_CHOICES = [
+        ('none', 'No Tax'),     # 0% خارج بلجيكا
+        ('food', 'Food (6%)'),  # مواد غذائية
+        ('home', 'Home (21%)'), # أدوات منزلية
+    ]
     translations = TranslatedFields(
         name = models.CharField(max_length=255),
         slug = models.SlugField(max_length=200),
@@ -37,6 +42,7 @@ class Product(TranslatableModel):
         style = models.CharField(max_length=255,blank=True, null=True),
         color = models.CharField(max_length=255,blank=True, null=True),
     )
+    tax_type = models.CharField(max_length=20, choices=TAX_CHOICES, default='none')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     image_1 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,null=True)
     image_2 = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,null=True)

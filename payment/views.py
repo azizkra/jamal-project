@@ -28,9 +28,13 @@ def payment_process(request):
 
         # add order items to the Stripe checkout session
         for item in order.items.all():
+            # ✅ حساب السعر الإجمالي للوحدة الواحدة شامل الضريبة
+            # (سعر الوحدة * (1 + نسبة الضريبة))
+            unit_price_with_tax = item.price * (Decimal('1.0') + item.get_tax_rate())
             session_data['line_items'].append({
                 'price_data': {
-                    'unit_amount': int(item.price * Decimal('100')),
+                    # ✅ Stripe إرسال السعر الجديد إلى
+                    'unit_amount': int(unit_price_with_tax * Decimal('100')),
                     'currency': 'usd',
                     'product_data':{
                         'name': item.product.name,

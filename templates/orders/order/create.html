@@ -68,14 +68,33 @@
           {% for item in cart %}
             <li class="d-flex justify-content-between mb-2">
               <span>{{ item.quantity }}x {{ item.product.name }}</span>
-              <span>${{ item.total_price }}</span>
+              <span>
+                ${{ item.price }}  
+                <small class="text-muted">
+                  + {{ item.tax_amount }} {% trans "tax" %}
+                </small>
+              </span>
             </li>
           {% endfor %}
         </ul>
         <hr>
-        <p class="fw-bold text-end">{% trans 'Total' %}: ${{ cart.get_total_price }}</p>
+        <p class="d-flex justify-content-between mb-1">
+          <span>{% trans 'Subtotal' %}</span>
+          <span>${{ cart.get_subtotal_price }}</span>
+        </p>
+        <br>
+        <p class="d-flex justify-content-between mb-1">
+          <span>{% trans 'Taxes' %}</span>
+          <span>${{ cart.get_total_tax }}</span>
+        </p>
+        <br>
+        <p class="fw-bold d-flex justify-content-between mt-2">
+          <span>{% trans 'Total with tax' %}</span>
+          <span>${{ cart.get_total_price_with_tax|floatformat:2 }}</span>
+        </p>
       </div>
     </div>
+
 
   </div>
 </section>

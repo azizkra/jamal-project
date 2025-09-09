@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load cache %}
+{% cache 600 sidebar %}
+    {% include "partials/sidebar.html" %}
+{% endcache %}
+
 {% load static i18n %}
 
 {% block meta %}

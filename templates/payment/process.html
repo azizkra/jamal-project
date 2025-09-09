@@ -16,7 +16,7 @@
             <th class="dark-color-txt">{% trans 'Name' %}</th>
             <th class="dark-color-txt">{% trans 'Price' %}</th>
             <th class="dark-color-txt">{% trans 'Quantity' %}</th>
-            <th class="dark-color-txt">{% trans 'Total' %}</th>
+            <th class="dark-color-txt">{% trans 'Total (incl. tax)' %}</th>
           </tr>
         </thead>
         <tbody>
@@ -32,12 +32,23 @@
               <td class="dark-color-txt">{{ item.product.name }}</td>
               <td class="dark-color-txt fs-small px-0">${{ item.price }}</td>
               <td class="dark-color-txt fs-small px-0">{{ item.quantity }}</td>
-              <td class="dark-color-txt px-0">${{ item.get_cost }}</td>
+              <!-- ✅ استخدام دالة get_cost لحساب السعر مع الضريبة -->
+              <td class="dark-color-txt px-0">${{ item.get_cost|floatformat:2 }}</td>
             </tr>
           {% endfor %}
+           <!-- ✅ إضافة صفوف للسعر الأساسي والضريبة -->
+          <tr class="total-details">
+            <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Subtotal' %}</td>
+            <td class="num dark-color-txt">${{ order.get_total_cost_without_tax|floatformat:2 }}</td>
+          </tr>
+          <tr class="total-details">
+            <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Taxes' %}</td>
+            <td class="num dark-color-txt">${{ order.get_total_tax|floatformat:2 }}</td>
+          </tr>
+          <!-- ✅ الصف الإجمالي النهائي -->
           <tr class="total">
             <td colspan="4" class="dark-color-txt fs-small px-0 text-end">{% trans 'Total' %}</td>
-            <td class="num text-success fw-bold">${{ order.get_total_cost }}</td>
+            <td class="num text-success fw-bold">${{ order.get_total_cost|floatformat:2 }}</td>
           </tr>
         </tbody>
       </table>

@@ -19,6 +19,11 @@
                 <span class="badge bg-primary">{{ user.is_vendor|yesno:"Vendor,Customer" }}</span>
             </div>
 
+            <p class="dark-color-txt small mb-1">
+                💵 {% trans 'Total' %}: ${{ item.get_cost }}
+                <small class="text-muted">(+ {{ item.tax_amount }} {% trans "tax" %})</small>
+            </p>
+
             <!-- زر تسجيل الخروج -->
             <form method="post" action="{% url 'account:account_logout' %}" class="d-inline">
                 {% csrf_token %}
