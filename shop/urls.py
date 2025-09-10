@@ -25,6 +25,6 @@ urlpatterns = [
     path('<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
 
     # --- الرئيسية: قائمة المنتجات ---
-    # path('', views.product_list, name='product_list'),
-    path('', cache_page(60 * 15)(views.product_list), name='product_list'),
+    path('', views.product_list, name='product_list'),
+    #path('', cache_page(60 * 15)(views.product_list), name='product_list'),
 ]

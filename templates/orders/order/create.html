@@ -83,11 +83,12 @@
           <span>${{ cart.get_subtotal_price }}</span>
         </p>
         <br>
+        <br>
         <p class="d-flex justify-content-between mb-1">
           <span>{% trans 'Taxes' %}</span>
           <span>${{ cart.get_total_tax }}</span>
         </p>
-        <br>
+        <br><br>
         <p class="fw-bold d-flex justify-content-between mt-2">
           <span>{% trans 'Total with tax' %}</span>
           <span>${{ cart.get_total_price_with_tax|floatformat:2 }}</span>

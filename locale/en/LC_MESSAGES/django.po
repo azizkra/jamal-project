@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-10 23:13+0300\n"
+"POT-Creation-Date: 2025-09-11 00:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,58 +18,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\account\form.py:8
+#: .\account\form.py:9
 msgid "Are you a merchant?"
 msgstr ""
 
-#: .\account\form.py:9
+#: .\account\form.py:10
 msgid "Tax number"
 msgstr ""
 
-#: .\account\form.py:34
+#: .\account\form.py:14
+msgid "Select country"
+msgstr ""
+
+#: .\account\form.py:15
+msgid "Country"
+msgstr ""
+
+#: .\account\form.py:44
 msgid "Merchant tax number must be entered"
 msgstr ""
 
-#: .\account\form.py:37
+#: .\account\form.py:47
 msgid "You must specify that you are a merchant if you enter your tax number."
 msgstr ""
 
-#: .\account\views.py:18
+#: .\account\views.py:21
 msgid "Account created and login successful."
 msgstr ""
 
-#: .\account\views.py:24
+#: .\account\views.py:27
 msgid "An error occurred while creating your account. Please check your data."
 msgstr ""
 
-#: .\account\views.py:38
+#: .\account\views.py:41
 msgid "You have successfully logged in."
 msgstr ""
 
-#: .\account\views.py:44
+#: .\account\views.py:47
 msgid "Incorrect username or password"
 msgstr ""
 
-#: .\cart\form.py:7 .\templates\account\vendor_profile.html:41
+#: .\cart\form.py:9 .\templates\account\customer_profile.html:58
+#: .\templates\account\vendor_profile.html:62
 #: .\templates\admin\orders\order\detail.html:81
-#: .\templates\cart\detail.html:25 .\templates\orders\order\pdf.html:113
-#: .\templates\payment\process.html:17
+#: .\templates\orders\order\pdf.html:113 .\templates\payment\process.html:18
 msgid "Quantity"
 msgstr ""
 
-#: .\mysite\settings.py:104
+#: .\mysite\settings.py:113
 msgid "English"
 msgstr ""
 
-#: .\mysite\settings.py:105
+#: .\mysite\settings.py:114
 msgid "French"
 msgstr ""
 
-#: .\mysite\settings.py:106
+#: .\mysite\settings.py:115
 msgid "German"
 msgstr ""
 
-#: .\mysite\settings.py:107
+#: .\mysite\settings.py:116
 msgid "Dutch"
 msgstr ""
 
@@ -105,46 +113,55 @@ msgstr ""
 msgid "canceled/"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:11
-msgid "You are registered as a merchant !"
+#: .\templates\account\customer_profile.html:27
+#: .\templates\account\vendor_profile.html:31
+msgid "Logout"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:12
-msgid "Your tax number:"
+#: .\templates\account\customer_profile.html:37
+#: .\templates\account\vendor_profile.html:41
+#: .\templates\admin\orders\order\detail.html:12
+msgid "Orders"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:13
-#: .\templates\account\vendor_profile.html:32
-msgid "Back to main page"
+#: .\templates\account\customer_profile.html:40
+#: .\templates\account\vendor_profile.html:44
+msgid "Settings"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:25
-msgid "quantity"
+#: .\templates\account\customer_profile.html:59
+#: .\templates\account\vendor_profile.html:23
+#: .\templates\account\vendor_profile.html:63
+#: .\templates\admin\orders\order\detail.html:82
+#: .\templates\admin\orders\order\detail.html:96
+#: .\templates\cart\detail.html:74 .\templates\orders\order\pdf.html:127
+#: .\templates\payment\process.html:50
+msgid "Total"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:26
-msgid "Total price"
+#: .\templates\account\customer_profile.html:64
+#: .\templates\account\vendor_profile.html:68
+msgid "No orders yet."
 msgstr ""
 
-#: .\templates\account\customer_profile.html:28
-#: .\templates\admin\orders\order\detail.html:35
-msgid "Customer"
+#: .\templates\account\customer_profile.html:71
+#: .\templates\account\vendor_profile.html:75
+msgid "Account Settings"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:29
-#: .\templates\admin\orders\order\detail.html:38
-msgid "E-mail"
+#: .\templates\account\customer_profile.html:75
+#: .\templates\account\vendor_profile.html:79
+msgid "Theme"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:30
-#: .\templates\orders\order\create.html:35 .\templates\others\about.html:49
-#: .\templates\others\privacy_policy.html:59
-msgid "Phone"
+#: .\templates\account\customer_profile.html:77
+#: .\templates\account\vendor_profile.html:81
+msgid "Light"
 msgstr ""
 
-#: .\templates\account\customer_profile.html:36
-#: .\templates\account\vendor_profile.html:52
-msgid "You have not purchased any products yet."
+#: .\templates\account\customer_profile.html:78
+#: .\templates\account\vendor_profile.html:82
+msgid "Dark"
 msgstr ""
 
 #: .\templates\account\login.html:11
@@ -175,56 +192,29 @@ msgstr ""
 msgid "Register now"
 msgstr ""
 
-#: .\templates\account\register.html:75
+#: .\templates\account\register.html:16
+msgid "Create a new account"
+msgstr ""
+
+#: .\templates\account\register.html:84
 msgid "registration"
 msgstr ""
 
-#: .\templates\account\register.html:89
+#: .\templates\account\register.html:98
 msgid "Do you have an account? "
 msgstr ""
 
-#: .\templates\account\register.html:89
+#: .\templates\account\register.html:98
 msgid "Log in "
 msgstr ""
 
-#: .\templates\account\vendor_profile.html:27
-msgid "Trader panel"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:29
-msgid "Welcome"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:29
-msgid "You are registered as a merchant!"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:30
-msgid "Your tax number: "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:42
-msgid "Total price "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:44
-msgid "Customer "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:45
-msgid "mail"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:46
-msgid "Phone "
+#: .\templates\account\vendor_profile.html:24
+#: .\templates\orders\order\create.html:74
+msgid "tax"
 msgstr ""
 
 #: .\templates\admin\orders\order\detail.html:11
 msgid "home"
-msgstr ""
-
-#: .\templates\admin\orders\order\detail.html:12
-msgid "Orders"
 msgstr ""
 
 #: .\templates\admin\orders\order\detail.html:14
@@ -244,8 +234,16 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+#: .\templates\admin\orders\order\detail.html:35
+msgid "Customer"
+msgstr ""
+
+#: .\templates\admin\orders\order\detail.html:38
+msgid "E-mail"
+msgstr ""
+
 #: .\templates\admin\orders\order\detail.html:42
-#: .\templates\orders\order\create.html:40 .\templates\others\about.html:50
+#: .\templates\orders\order\create.html:39 .\templates\others\about.html:50
 msgid "Address"
 msgstr ""
 
@@ -286,145 +284,139 @@ msgid "Items bought"
 msgstr ""
 
 #: .\templates\admin\orders\order\detail.html:79
-#: .\templates\orders\order\pdf.html:111 .\templates\payment\process.html:15
+#: .\templates\orders\order\pdf.html:111
 msgid "Product"
 msgstr ""
 
 #: .\templates\admin\orders\order\detail.html:80
-#: .\templates\orders\order\pdf.html:112 .\templates\payment\process.html:16
-#: .\templates\shop\product\detail.html:47
-#: .\templates\shop\product\detail.html:49
-#: .\templates\shop\product\detail.html:51
+#: .\templates\orders\order\pdf.html:112 .\templates\payment\process.html:17
+#: .\templates\shop\product\detail.html:87
+#: .\templates\shop\product\detail.html:89
 msgid "Price"
 msgstr ""
 
-#: .\templates\admin\orders\order\detail.html:82
-#: .\templates\admin\orders\order\detail.html:96
-#: .\templates\cart\detail.html:59 .\templates\orders\order\create.html:78
-#: .\templates\orders\order\pdf.html:127 .\templates\payment\process.html:18
-#: .\templates\payment\process.html:39
-msgid "Total"
-msgstr ""
-
-#: .\templates\base.html:21
+#: .\templates\base.html:29
 msgid "My shop"
 msgstr ""
 
-#: .\templates\base.html:33
-msgid "Jammal Gold"
-msgstr ""
-
-#: .\templates\base.html:43
-msgid "Home"
-msgstr ""
-
-#: .\templates\base.html:46
-msgid "Shop"
-msgstr ""
-
-#: .\templates\base.html:49
-msgid "About"
-msgstr ""
-
-#: .\templates\base.html:52
-msgid "Contact"
-msgstr ""
-
-#: .\templates\base.html:150 .\templates\others\privacy_policy.html:6
+#: .\templates\base.html:63 .\templates\others\privacy_policy.html:6
 #: .\templates\others\privacy_policy.html:14
 msgid "Privacy Policy"
 msgstr ""
 
-#: .\templates\base.html:153 .\templates\others\terms.html:6
+#: .\templates\base.html:66 .\templates\others\terms.html:6
 #: .\templates\others\terms.html:14
 msgid "Terms of Service"
 msgstr ""
 
-#: .\templates\base.html:156 .\templates\others\contact.html:6
+#: .\templates\base.html:69 .\templates\others\contact.html:6
 #: .\templates\others\contact.html:12 .\templates\others\privacy_policy.html:55
 msgid "Contact Us"
 msgstr ""
 
-#: .\templates\base.html:177
+#: .\templates\base.html:90
 msgid "@2025 Trendify. All rights reserved"
 msgstr ""
 
-#: .\templates\cart\detail.html:6
+#: .\templates\cart\detail.html:5
 msgid "Your shopping cart"
 msgstr ""
 
-#: .\templates\cart\detail.html:11
+#: .\templates\cart\detail.html:10
 msgid "Review Items"
 msgstr ""
 
-#: .\templates\cart\detail.html:47
+#: .\templates\cart\detail.html:37
+msgid "Update"
+msgstr ""
+
+#: .\templates\cart\detail.html:41
+msgid "Remove"
+msgstr ""
+
+#: .\templates\cart\detail.html:57
 msgid "Order Summary"
 msgstr ""
 
-#: .\templates\cart\detail.html:50
+#: .\templates\cart\detail.html:60 .\templates\orders\order\create.html:82
+#: .\templates\payment\process.html:41
 msgid "Subtotal"
 msgstr ""
 
-#: .\templates\cart\detail.html:54
+#: .\templates\cart\detail.html:65 .\templates\orders\order\create.html:87
+#: .\templates\payment\process.html:45
+msgid "Taxes"
+msgstr ""
+
+#: .\templates\cart\detail.html:69
 msgid "Shipping"
 msgstr ""
 
-#: .\templates\cart\detail.html:55
+#: .\templates\cart\detail.html:70
 msgid "Free"
 msgstr ""
 
-#: .\templates\cart\detail.html:64
+#: .\templates\cart\detail.html:80
 msgid "Proceed to Checkout"
 msgstr ""
 
-#: .\templates\cart\detail.html:68
+#: .\templates\cart\detail.html:86 .\templates\payment\completed.html:15
 msgid "Continue Shopping"
 msgstr ""
 
-#: .\templates\cart\detail.html:74
+#: .\templates\cart\detail.html:93
 msgid "Your cart is empty"
 msgstr ""
 
-#: .\templates\cart\detail.html:74
+#: .\templates\cart\detail.html:95
 msgid "Start shopping"
 msgstr ""
 
 #: .\templates\orders\order\create.html:6
-#: .\templates\orders\order\create.html:13
+#: .\templates\orders\order\create.html:11
 msgid "Checkout"
 msgstr ""
 
-#: .\templates\orders\order\create.html:20
+#: .\templates\orders\order\create.html:19
 msgid "First Name"
 msgstr ""
 
-#: .\templates\orders\order\create.html:25
+#: .\templates\orders\order\create.html:24
 msgid "Last Name"
 msgstr ""
 
-#: .\templates\orders\order\create.html:30 .\templates\others\about.html:48
+#: .\templates\orders\order\create.html:29 .\templates\others\about.html:48
 #: .\templates\others\privacy_policy.html:58 .\templates\others\terms.html:54
 msgid "Email"
 msgstr ""
 
-#: .\templates\orders\order\create.html:46
+#: .\templates\orders\order\create.html:34 .\templates\others\about.html:49
+#: .\templates\others\privacy_policy.html:59
+msgid "Phone"
+msgstr ""
+
+#: .\templates\orders\order\create.html:44
 msgid "Residence Place"
 msgstr ""
 
-#: .\templates\orders\order\create.html:52
+#: .\templates\orders\order\create.html:50
 msgid "Postal Code"
 msgstr ""
 
-#: .\templates\orders\order\create.html:56
+#: .\templates\orders\order\create.html:54
 msgid "City"
 msgstr ""
 
-#: .\templates\orders\order\create.html:61
+#: .\templates\orders\order\create.html:59
 msgid "Place Order"
 msgstr ""
 
-#: .\templates\orders\order\create.html:68
+#: .\templates\orders\order\create.html:66
 msgid "Your order"
+msgstr ""
+
+#: .\templates\orders\order\create.html:92
+msgid "Total with tax"
 msgstr ""
 
 #: .\templates\orders\order\pdf.html:90
@@ -513,6 +505,26 @@ msgstr ""
 
 #: .\templates\others\contact.html:36
 msgid "send"
+msgstr ""
+
+#: .\templates\others\header.html:9
+msgid "Jammal Gold"
+msgstr ""
+
+#: .\templates\others\header.html:25
+msgid "Home"
+msgstr ""
+
+#: .\templates\others\header.html:28
+msgid "Shop"
+msgstr ""
+
+#: .\templates\others\header.html:31
+msgid "About"
+msgstr ""
+
+#: .\templates\others\header.html:34
+msgid "Contact"
 msgstr ""
 
 #: .\templates\others\privacy_policy.html:16
@@ -790,27 +802,31 @@ msgstr ""
 msgid "If you have any questions, please contact us at"
 msgstr ""
 
-#: .\templates\payment\canceled.html:2
+#: .\templates\payment\canceled.html:4
 msgid "Payment canceled"
 msgstr ""
 
-#: .\templates\payment\canceled.html:5
+#: .\templates\payment\canceled.html:12
 msgid "Your payment has not been processed"
 msgstr ""
 
-#: .\templates\payment\canceled.html:6
+#: .\templates\payment\canceled.html:13
 msgid "There was a problem processing your payment"
 msgstr ""
 
-#: .\templates\payment\completed.html:3
+#: .\templates\payment\canceled.html:15
+msgid "Try Again"
+msgstr ""
+
+#: .\templates\payment\completed.html:4
 msgid "Payment successful"
 msgstr ""
 
-#: .\templates\payment\completed.html:6
+#: .\templates\payment\completed.html:12
 msgid "Your payment was successful"
 msgstr ""
 
-#: .\templates\payment\completed.html:7
+#: .\templates\payment\completed.html:13
 msgid "Your payment has been processed successfully"
 msgstr ""
 
@@ -822,80 +838,77 @@ msgstr ""
 msgid "Order summary"
 msgstr ""
 
-#: .\templates\payment\process.html:14
+#: .\templates\payment\process.html:15
 msgid "Image"
 msgstr ""
 
-#: .\templates\payment\process.html:48
+#: .\templates\payment\process.html:16
+msgid "Name"
+msgstr ""
+
+#: .\templates\payment\process.html:19
+msgid "Total (incl. tax)"
+msgstr ""
+
+#: .\templates\payment\process.html:61
 msgid "Pay Now"
 msgstr ""
 
-#: .\templates\shop\product\categories.html:6
-msgid "Shop By Category"
-msgstr ""
-
-#: .\templates\shop\product\categories.html:12
+#: .\templates\shop\product\categories.html:3
 msgid "Shop by Category"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:54
+#: .\templates\shop\product\detail.html:92
 msgid "Available Stock"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:61
+#: .\templates\shop\product\detail.html:98
+#: .\templates\shop\product\detail.html:121
 msgid "Add to Cart"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:65
+#: .\templates\shop\product\detail.html:127
 msgid "login for more!"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:70
+#: .\templates\shop\product\detail.html:131
 msgid "Product Description"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:75
+#: .\templates\shop\product\detail.html:136
 msgid "Category"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:86
-msgid "You might also like:"
-msgstr ""
-
-#: .\templates\shop\product\detail.html:106
-msgid "No similar product"
-msgstr ""
-
-#: .\templates\shop\product\list.html:6
+#: .\templates\shop\product\list.html:27
 msgid "Products"
 msgstr ""
 
-#: .\templates\shop\product\list.html:13
+#: .\templates\shop\product\list.html:35
 msgid "Discover Your Style"
 msgstr ""
 
-#: .\templates\shop\product\list.html:14
+#: .\templates\shop\product\list.html:36
 msgid ""
 "Explore our curated collection of fashion-forward pieces that reflect your "
 "unique personality"
 msgstr ""
 
-#: .\templates\shop\product\list.html:19
+#: .\templates\shop\product\list.html:43
 msgid "Featured Products"
 msgstr ""
 
-#: .\templates\shop\product\list.html:39
+#: .\templates\shop\product\list.html:65
 msgid "no product yet"
 msgstr ""
 
-#: .\templates\shop\product\list.html:46
+#: .\templates\shop\product\list.html:71
 msgid "New Arrivals"
 msgstr ""
 
-#: .\templates\shop\product\list.html:58
+#: .\templates\shop\product\list.html:82
 msgid "New"
 msgstr ""
 
-#: .\templates\shop\product\list.html:78
+#: .\templates\shop\product\list.html:98
 msgid "No new arrivals yet."
 msgstr ""

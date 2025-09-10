@@ -11,7 +11,7 @@
 
     {% if cart %}
         <div class="cart-scroll">
-            <ul class="list-unstyled d-flex flex-column gap-3">
+            <ul class="list-unstyled">
                 {% for item in cart %}
                     {% with product=item.product %}
                     <li class="cart-item d-flex align-items-center gap-3 py-3 border-bottom flex-nowrap">

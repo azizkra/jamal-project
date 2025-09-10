@@ -453,6 +453,13 @@ body.dark-mode .order-info{
 body.dark-mode .dropdown-menu.show{
     background-color : #6c757d;
 }
+body.dark-mode .dropdown-item:focus, .dropdown-item:hover{
+    background-color: #343a40;
+}
+
+body.dark-mode .dropdown-item.active, .dropdown-item:active{
+    background-color: #343a40;
+}
 body.dark-mode .dark-color.active {
     color: #333 !important;
     font-weight: 500;

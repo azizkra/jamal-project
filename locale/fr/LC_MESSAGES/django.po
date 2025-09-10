@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-10 23:13+0300\n"
-"PO-Revision-Date: 2025-07-23 11:55+0000\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2025-09-11 00:44+0300\n"
+"PO-Revision-Date: 2025-09-11 00:52+0000\n"
+"Last-Translator:   <aziz@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,77 +19,92 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.2\n"
 
-#: .\account\form.py:8
-msgid "Are you a merchant?"
-msgstr ""
-
 #: .\account\form.py:9
+msgid "Are you a merchant?"
+msgstr "Etes-vous un commerçant ?"
+
+#: .\account\form.py:10
 msgid "Tax number"
-msgstr ""
+msgstr "Numéro fiscal"
 
-#: .\account\form.py:34
+#: .\account\form.py:14
+msgid "Select country"
+msgstr "Sélectionnez un pays"
+
+#: .\account\form.py:15
+msgid "Country"
+msgstr "Pays"
+
+#: .\account\form.py:44
 msgid "Merchant tax number must be entered"
-msgstr ""
+msgstr "Le numéro de taxe du commerçant doit être saisi"
 
-#: .\account\form.py:37
+#: .\account\form.py:47
 msgid "You must specify that you are a merchant if you enter your tax number."
 msgstr ""
+"Vous devez préciser que vous êtes commerçant si vous saisissez votre numéro "
+"de taxe."
 
-#: .\account\views.py:18
+#: .\account\views.py:21
 msgid "Account created and login successful."
-msgstr ""
+msgstr "Compte créé et connexion réussie."
 
-#: .\account\views.py:24
+#: .\account\views.py:27
 msgid "An error occurred while creating your account. Please check your data."
 msgstr ""
+"Une erreur s'est produite lors de la création de votre compte. Veuillez "
+"vérifier vos données."
 
-#: .\account\views.py:38
+#: .\account\views.py:41
 msgid "You have successfully logged in."
-msgstr ""
+msgstr "Vous vous êtes connecté avec succès."
 
-#: .\account\views.py:44
+#: .\account\views.py:47
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Nom d'utilisateur ou mot de passe incorrect"
 
-#: .\cart\form.py:7 .\templates\account\vendor_profile.html:41
+#: .\cart\form.py:9 .\templates\account\customer_profile.html:58
+#: .\templates\account\vendor_profile.html:62
 #: .\templates\admin\orders\order\detail.html:81
-#: .\templates\cart\detail.html:25 .\templates\orders\order\pdf.html:113
-#: .\templates\payment\process.html:17
+#: .\templates\orders\order\pdf.html:113 .\templates\payment\process.html:18
 msgid "Quantity"
 msgstr "Quantité"
 
-#: .\mysite\settings.py:104
+#: .\mysite\settings.py:113
 msgid "English"
 msgstr "Anglaise"
 
-#: .\mysite\settings.py:105
+#: .\mysite\settings.py:114
 msgid "French"
 msgstr "Français"
 
-#: .\mysite\settings.py:106
+#: .\mysite\settings.py:115
 msgid "German"
 msgstr "Allemande"
 
-#: .\mysite\settings.py:107
+#: .\mysite\settings.py:116
 msgid "Dutch"
-msgstr ""
+msgstr "Néerlandaise"
 
 #: .\mysite\urls.py:17
-#, fuzzy
 msgid "cart/"
-msgstr "panier/"
+msgstr ""
 
 #: .\mysite\urls.py:18
+#, fuzzy
+#| msgid "orders/"
 msgid "orders/"
 msgstr "ordres/"
 
 #: .\mysite\urls.py:19
+#, fuzzy
+#| msgid "payment/"
 msgid "payment/"
 msgstr "paiement/"
 
 #: .\mysite\urls.py:20
 msgid "account/"
-msgstr "compte/"
+msgstr ""
 
 #: .\mysite\urls.py:23
 msgid "rosetta/"
@@ -97,151 +112,124 @@ msgstr "rosette/"
 
 #: .\payment\urls.py:8
 msgid "process/"
-msgstr "processus/"
+msgstr ""
 
 #: .\payment\urls.py:9
 msgid "completed/"
-msgstr "complété/"
+msgstr ""
 
 #: .\payment\urls.py:10
+#, fuzzy
+#| msgid "canceled/"
 msgid "canceled/"
 msgstr "annulé/"
 
-#: .\templates\account\customer_profile.html:11
-msgid "You are registered as a merchant !"
-msgstr ""
+#: .\templates\account\customer_profile.html:27
+#: .\templates\account\vendor_profile.html:31
+msgid "Logout"
+msgstr "Déconnexion"
 
-#: .\templates\account\customer_profile.html:12
-msgid "Your tax number:"
-msgstr ""
-
-#: .\templates\account\customer_profile.html:13
-#: .\templates\account\vendor_profile.html:32
-msgid "Back to main page"
-msgstr ""
-
-#: .\templates\account\customer_profile.html:25
-#, fuzzy
-#| msgid "Quantity"
-msgid "quantity"
-msgstr "Quantité"
-
-#: .\templates\account\customer_profile.html:26
-#, fuzzy
-#| msgid "Total"
-msgid "Total price"
-msgstr "Totale"
-
-#: .\templates\account\customer_profile.html:28
-#: .\templates\admin\orders\order\detail.html:35
-msgid "Customer"
-msgstr ""
-
-#: .\templates\account\customer_profile.html:29
-#: .\templates\admin\orders\order\detail.html:38
-#, fuzzy
-#| msgid "Email"
-msgid "E-mail"
-msgstr "E-mail"
-
-#: .\templates\account\customer_profile.html:30
-#: .\templates\orders\order\create.html:35 .\templates\others\about.html:49
-#: .\templates\others\privacy_policy.html:59
-msgid "Phone"
-msgstr "Téléphone"
-
-#: .\templates\account\customer_profile.html:36
-#: .\templates\account\vendor_profile.html:52
-msgid "You have not purchased any products yet."
-msgstr ""
-
-#: .\templates\account\login.html:11
-msgid "side photo"
-msgstr ""
-
-#: .\templates\account\login.html:16 .\templates\account\login.html:30
-msgid "Login"
-msgstr ""
-
-#: .\templates\account\login.html:21
-msgid "User name"
-msgstr ""
-
-#: .\templates\account\login.html:22
-msgid "Enter username"
-msgstr ""
-
-#: .\templates\account\login.html:26
-msgid "Password"
-msgstr ""
-
-#: .\templates\account\login.html:44
-msgid "Don't have an account?"
-msgstr ""
-
-#: .\templates\account\login.html:44
-msgid "Register now"
-msgstr ""
-
-#: .\templates\account\register.html:75
-msgid "registration"
-msgstr ""
-
-#: .\templates\account\register.html:89
-msgid "Do you have an account? "
-msgstr ""
-
-#: .\templates\account\register.html:89
-msgid "Log in "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:27
-msgid "Trader panel"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:29
-msgid "Welcome"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:29
-msgid "You are registered as a merchant!"
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:30
-msgid "Your tax number: "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:42
-#, fuzzy
-#| msgid "Total"
-msgid "Total price "
-msgstr "Totale"
-
-#: .\templates\account\vendor_profile.html:44
-msgid "Customer "
-msgstr ""
-
-#: .\templates\account\vendor_profile.html:45
-#, fuzzy
-#| msgid "Email"
-msgid "mail"
-msgstr "E-mail"
-
-#: .\templates\account\vendor_profile.html:46
-#, fuzzy
-#| msgid "Phone"
-msgid "Phone "
-msgstr "Téléphone"
-
-#: .\templates\admin\orders\order\detail.html:11
-msgid "home"
-msgstr ""
-
+#: .\templates\account\customer_profile.html:37
+#: .\templates\account\vendor_profile.html:41
 #: .\templates\admin\orders\order\detail.html:12
 #, fuzzy
 #| msgid "orders/"
 msgid "Orders"
 msgstr "ordres/"
+
+#: .\templates\account\customer_profile.html:40
+#: .\templates\account\vendor_profile.html:44
+msgid "Settings"
+msgstr "Paramètres"
+
+#: .\templates\account\customer_profile.html:59
+#: .\templates\account\vendor_profile.html:23
+#: .\templates\account\vendor_profile.html:63
+#: .\templates\admin\orders\order\detail.html:82
+#: .\templates\admin\orders\order\detail.html:96
+#: .\templates\cart\detail.html:74 .\templates\orders\order\pdf.html:127
+#: .\templates\payment\process.html:50
+msgid "Total"
+msgstr "Totale"
+
+#: .\templates\account\customer_profile.html:64
+#: .\templates\account\vendor_profile.html:68
+msgid "No orders yet."
+msgstr "Aucune commande pour l'instant."
+
+#: .\templates\account\customer_profile.html:71
+#: .\templates\account\vendor_profile.html:75
+msgid "Account Settings"
+msgstr "Paramètres du compte"
+
+#: .\templates\account\customer_profile.html:75
+#: .\templates\account\vendor_profile.html:79
+msgid "Theme"
+msgstr "Thème"
+
+#: .\templates\account\customer_profile.html:77
+#: .\templates\account\vendor_profile.html:81
+msgid "Light"
+msgstr "Lumière"
+
+#: .\templates\account\customer_profile.html:78
+#: .\templates\account\vendor_profile.html:82
+msgid "Dark"
+msgstr "Sombre"
+
+#: .\templates\account\login.html:11
+msgid "side photo"
+msgstr "photo de côté"
+
+#: .\templates\account\login.html:16 .\templates\account\login.html:30
+msgid "Login"
+msgstr "Se connecter"
+
+#: .\templates\account\login.html:21
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+#: .\templates\account\login.html:22
+msgid "Enter username"
+msgstr "Entrez le nom d'utilisateur"
+
+#: .\templates\account\login.html:26
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\templates\account\login.html:44
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+#: .\templates\account\login.html:44
+msgid "Register now"
+msgstr "Inscrivez-vous maintenant"
+
+#: .\templates\account\register.html:16
+#| msgid "Don't have an account?"
+msgid "Create a new account"
+msgstr "Créer un nouveau compte"
+
+#: .\templates\account\register.html:84
+msgid "registration"
+msgstr "inscription"
+
+#: .\templates\account\register.html:98
+msgid "Do you have an account? "
+msgstr "Avez-vous un compte?"
+
+#: .\templates\account\register.html:98
+msgid "Log in "
+msgstr "Se connecter"
+
+#: .\templates\account\vendor_profile.html:24
+#: .\templates\orders\order\create.html:74
+msgid "tax"
+msgstr "impôt"
+
+#: .\templates\admin\orders\order\detail.html:11
+msgid "home"
+msgstr "maison"
 
 #: .\templates\admin\orders\order\detail.html:14
 #: .\templates\admin\orders\order\detail.html:22
@@ -252,7 +240,7 @@ msgstr "ordres/"
 
 #: .\templates\admin\orders\order\detail.html:15
 msgid "Detail"
-msgstr ""
+msgstr "Détail"
 
 #: .\templates\admin\orders\order\detail.html:26
 #, fuzzy
@@ -262,26 +250,36 @@ msgstr "Votre commande"
 
 #: .\templates\admin\orders\order\detail.html:32
 msgid "Created"
-msgstr ""
+msgstr "Créé"
+
+#: .\templates\admin\orders\order\detail.html:35
+msgid "Customer"
+msgstr "Cliente"
+
+#: .\templates\admin\orders\order\detail.html:38
+#, fuzzy
+#| msgid "Email"
+msgid "E-mail"
+msgstr "E-mail"
 
 #: .\templates\admin\orders\order\detail.html:42
-#: .\templates\orders\order\create.html:40 .\templates\others\about.html:50
+#: .\templates\orders\order\create.html:39 .\templates\others\about.html:50
 msgid "Address"
 msgstr "Adresse"
 
 #: .\templates\admin\orders\order\detail.html:49
 msgid "Total amount"
-msgstr ""
+msgstr "Montant total"
 
 #: .\templates\admin\orders\order\detail.html:53
 #: .\templates\admin\orders\order\detail.html:57
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #: .\templates\admin\orders\order\detail.html:54
 #: .\templates\orders\order\pdf.html:136
 msgid "Paid"
-msgstr ""
+msgstr "Payé"
 
 #: .\templates\admin\orders\order\detail.html:54
 #: .\templates\orders\order\pdf.html:136
@@ -292,11 +290,11 @@ msgstr "paiement/"
 
 #: .\templates\admin\orders\order\detail.html:58
 msgid "delivired"
-msgstr ""
+msgstr "livré"
 
 #: .\templates\admin\orders\order\detail.html:58
 msgid "Pending delivired"
-msgstr ""
+msgstr "En attente de livraison"
 
 #: .\templates\admin\orders\order\detail.html:61
 #, fuzzy
@@ -307,165 +305,162 @@ msgstr "paiement/"
 #: .\templates\admin\orders\order\detail.html:75
 #: .\templates\orders\order\pdf.html:107
 msgid "Items bought"
-msgstr ""
+msgstr "Articles achetés"
 
 #: .\templates\admin\orders\order\detail.html:79
-#: .\templates\orders\order\pdf.html:111 .\templates\payment\process.html:15
+#: .\templates\orders\order\pdf.html:111
 #, fuzzy
 #| msgid "Products"
 msgid "Product"
 msgstr "Produits"
 
 #: .\templates\admin\orders\order\detail.html:80
-#: .\templates\orders\order\pdf.html:112 .\templates\payment\process.html:16
-#: .\templates\shop\product\detail.html:47
-#: .\templates\shop\product\detail.html:49
-#: .\templates\shop\product\detail.html:51
+#: .\templates\orders\order\pdf.html:112 .\templates\payment\process.html:17
+#: .\templates\shop\product\detail.html:87
+#: .\templates\shop\product\detail.html:89
 msgid "Price"
 msgstr "Prix"
 
-#: .\templates\admin\orders\order\detail.html:82
-#: .\templates\admin\orders\order\detail.html:96
-#: .\templates\cart\detail.html:59 .\templates\orders\order\create.html:78
-#: .\templates\orders\order\pdf.html:127 .\templates\payment\process.html:18
-#: .\templates\payment\process.html:39
-msgid "Total"
-msgstr "Totale"
-
-#: .\templates\base.html:21
+#: .\templates\base.html:29
 msgid "My shop"
 msgstr "Ma boutique"
 
-#: .\templates\base.html:33
-msgid "Jammal Gold"
-msgstr ""
-
-#: .\templates\base.html:43
-msgid "Home"
-msgstr "Maison"
-
-#: .\templates\base.html:46
-msgid "Shop"
-msgstr "Boutique"
-
-#: .\templates\base.html:49
-msgid "About"
-msgstr "À propos"
-
-#: .\templates\base.html:52
-msgid "Contact"
-msgstr "Contact"
-
-#: .\templates\base.html:150 .\templates\others\privacy_policy.html:6
+#: .\templates\base.html:63 .\templates\others\privacy_policy.html:6
 #: .\templates\others\privacy_policy.html:14
 msgid "Privacy Policy"
 msgstr "politique de confidentialité"
 
-#: .\templates\base.html:153 .\templates\others\terms.html:6
+#: .\templates\base.html:66 .\templates\others\terms.html:6
 #: .\templates\others\terms.html:14
 msgid "Terms of Service"
 msgstr "Conditions d'utilisation"
 
-#: .\templates\base.html:156 .\templates\others\contact.html:6
-#: .\templates\others\contact.html:12 .\templates\others\privacy_policy.html:55
+#: .\templates\base.html:69 .\templates\others\contact.html:6
+#: .\templates\others\contact.html:12
+#: .\templates\others\privacy_policy.html:55
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: .\templates\base.html:177
+#: .\templates\base.html:90
 msgid "@2025 Trendify. All rights reserved"
 msgstr "@2025 Trendify. Tous droits réservés."
 
-#: .\templates\cart\detail.html:6
+#: .\templates\cart\detail.html:5
 msgid "Your shopping cart"
-msgstr ""
+msgstr "Votre panier"
 
-#: .\templates\cart\detail.html:11
+#: .\templates\cart\detail.html:10
 msgid "Review Items"
-msgstr ""
+msgstr "Réviser les éléments"
 
-#: .\templates\cart\detail.html:47
+#: .\templates\cart\detail.html:37
+msgid "Update"
+msgstr "Mise à jour"
+
+#: .\templates\cart\detail.html:41
+msgid "Remove"
+msgstr "Retirer"
+
+#: .\templates\cart\detail.html:57
 msgid "Order Summary"
-msgstr ""
+msgstr "Récapitulatif de la commande"
 
-#: .\templates\cart\detail.html:50
+#: .\templates\cart\detail.html:60 .\templates\orders\order\create.html:82
+#: .\templates\payment\process.html:41
 #, fuzzy
 #| msgid "Total"
 msgid "Subtotal"
 msgstr "Totale"
 
-#: .\templates\cart\detail.html:54
+#: .\templates\cart\detail.html:65 .\templates\orders\order\create.html:87
+#: .\templates\payment\process.html:45
+msgid "Taxes"
+msgstr "Impôts"
+
+#: .\templates\cart\detail.html:69
 msgid "Shipping"
-msgstr ""
+msgstr "Expédition"
 
-#: .\templates\cart\detail.html:55
+#: .\templates\cart\detail.html:70
 msgid "Free"
-msgstr ""
+msgstr "Gratuite"
 
-#: .\templates\cart\detail.html:64
+#: .\templates\cart\detail.html:80
 msgid "Proceed to Checkout"
-msgstr ""
+msgstr "Passer à la caisse"
 
-#: .\templates\cart\detail.html:68
+#: .\templates\cart\detail.html:86 .\templates\payment\completed.html:15
 msgid "Continue Shopping"
-msgstr ""
+msgstr "Continuer vos achats"
 
-#: .\templates\cart\detail.html:74
+#: .\templates\cart\detail.html:93
 msgid "Your cart is empty"
-msgstr ""
+msgstr "Votre panier est vide"
 
-#: .\templates\cart\detail.html:74
+#: .\templates\cart\detail.html:95
 msgid "Start shopping"
-msgstr ""
+msgstr "Commencez vos achats"
 
 #: .\templates\orders\order\create.html:6
-#: .\templates\orders\order\create.html:13
+#: .\templates\orders\order\create.html:11
 msgid "Checkout"
 msgstr "Vérifier"
 
-#: .\templates\orders\order\create.html:20
+#: .\templates\orders\order\create.html:19
 msgid "First Name"
 msgstr "Prénom"
 
-#: .\templates\orders\order\create.html:25
+#: .\templates\orders\order\create.html:24
 msgid "Last Name"
 msgstr "Nom de famille"
 
-#: .\templates\orders\order\create.html:30 .\templates\others\about.html:48
+#: .\templates\orders\order\create.html:29 .\templates\others\about.html:48
 #: .\templates\others\privacy_policy.html:58 .\templates\others\terms.html:54
 msgid "Email"
 msgstr "E-mail"
 
-#: .\templates\orders\order\create.html:46
+#: .\templates\orders\order\create.html:34 .\templates\others\about.html:49
+#: .\templates\others\privacy_policy.html:59
+msgid "Phone"
+msgstr "Téléphone"
+
+#: .\templates\orders\order\create.html:44
 msgid "Residence Place"
 msgstr "Lieu de résidence"
 
-#: .\templates\orders\order\create.html:52
+#: .\templates\orders\order\create.html:50
 msgid "Postal Code"
 msgstr "Code Postal"
 
-#: .\templates\orders\order\create.html:56
+#: .\templates\orders\order\create.html:54
 msgid "City"
 msgstr "Ville"
 
-#: .\templates\orders\order\create.html:61
+#: .\templates\orders\order\create.html:59
 msgid "Place Order"
 msgstr "Passer la commande"
 
-#: .\templates\orders\order\create.html:68
+#: .\templates\orders\order\create.html:66
 msgid "Your order"
 msgstr "Votre commande"
 
+#: .\templates\orders\order\create.html:92
+#, fuzzy
+#| msgid "Total"
+msgid "Total with tax"
+msgstr "Totale"
+
 #: .\templates\orders\order\pdf.html:90
 msgid "Jammal Gold - Invoice"
-msgstr ""
+msgstr "Jammal Gold - Facture"
 
 #: .\templates\orders\order\pdf.html:97
 msgid "Bill to"
-msgstr ""
+msgstr "Facturer à"
 
 #: .\templates\orders\order\pdf.html:114
 msgid "Cost"
-msgstr ""
+msgstr "Coût"
 
 #: .\templates\others\about.html:6 .\templates\others\about.html:12
 #, fuzzy
@@ -475,93 +470,126 @@ msgstr "À propos"
 
 #: .\templates\others\about.html:13
 msgid "Bringing comfort and style to your home"
-msgstr ""
+msgstr "Apportez confort et style à votre maison"
 
 #: .\templates\others\about.html:17
 msgid "Our Story"
-msgstr ""
+msgstr "Notre histoire"
 
 #: .\templates\others\about.html:19
 msgid "Welcome to"
-msgstr ""
+msgstr "Bienvenue à"
 
 #: .\templates\others\about.html:19
 msgid "your go-to destination for premium home furniture and decor"
 msgstr ""
+"votre destination de choix pour les meubles et la décoration haut de gamme "
+"pour la maison"
 
 #: .\templates\others\about.html:20
 msgid ""
 "We started with a simple idea — to make beautiful, high-quality furniture "
 "accessible to everyone"
 msgstr ""
+"Nous avons commencé avec une idée simple : rendre de beaux meubles de haute "
+"qualité accessibles à tous"
 
 #: .\templates\others\about.html:23
 msgid "Our Mission"
-msgstr ""
+msgstr "Notre mission"
 
 #: .\templates\others\about.html:25
 msgid "Our mission is to help you turn your house into a home you love"
 msgstr ""
+"Notre mission est de vous aider à transformer votre maison en un foyer que "
+"vous aimez"
 
 #: .\templates\others\about.html:26
 msgid ""
-"We focus on offering well-crafted, stylish, and durable pieces at affordable "
-"prices"
+"We focus on offering well-crafted, stylish, and durable pieces at affordable"
+" prices"
 msgstr ""
+"Nous nous concentrons sur l'offre de pièces bien conçues, élégantes et "
+"durables à des prix abordables"
 
 #: .\templates\others\about.html:29
 msgid "Why Choose Us"
-msgstr ""
+msgstr "Pourquoi nous choisir"
 
 #: .\templates\others\about.html:31
 msgid "Wide variety of home furniture & accessories"
-msgstr ""
+msgstr "Grande variété de meubles et d'accessoires pour la maison"
 
 #: .\templates\others\about.html:32
 msgid "High-quality, hand-picked materials"
-msgstr ""
+msgstr "Matériaux de haute qualité, sélectionnés à la main"
 
 #: .\templates\others\about.html:33
 msgid "Fast and reliable delivery"
-msgstr ""
+msgstr "Livraison rapide et fiable"
 
 #: .\templates\others\about.html:34
 msgid "Excellent customer service"
-msgstr ""
+msgstr "Excellent service client"
 
 #: .\templates\others\about.html:37
 msgid "Meet the Team"
-msgstr ""
+msgstr "Excellent customer service"
 
 #: .\templates\others\about.html:43
 msgid "Get in Touch"
-msgstr ""
+msgstr "Entrer en contact"
 
 #: .\templates\others\about.html:45
 msgid "Have questions or feedback? We'd love to hear from you"
 msgstr ""
+"Vous avez des questions ou des commentaires ? N'hésitez pas à nous "
+"contacter."
 
 #: .\templates\others\contact.html:36
 msgid "send"
-msgstr ""
+msgstr "envoyer"
+
+#: .\templates\others\header.html:9
+msgid "Jammal Gold"
+msgstr "Jammal Or"
+
+#: .\templates\others\header.html:25
+msgid "Home"
+msgstr "Maison"
+
+#: .\templates\others\header.html:28
+msgid "Shop"
+msgstr "Boutique"
+
+#: .\templates\others\header.html:31
+msgid "About"
+msgstr "À propos"
+
+#: .\templates\others\header.html:34
+msgid "Contact"
+msgstr "Contact"
 
 #: .\templates\others\privacy_policy.html:16
 msgid "Welcome to our website"
-msgstr ""
+msgstr "Bienvenue sur notre site Internet"
 
 #: .\templates\others\privacy_policy.html:17
 msgid ""
 "We value your privacy and are committed to protecting the personal "
 "information you provide when using our home products online store"
 msgstr ""
+"Nous respectons votre vie privée et nous engageons à protéger les "
+"informations personnelles que vous fournissez lorsque vous utilisez notre "
+"boutique en ligne de produits pour la maison."
 
 #: .\templates\others\privacy_policy.html:19
 msgid "Information We Collect"
-msgstr ""
+msgstr "Informations que nous collectons"
 
 #: .\templates\others\privacy_policy.html:21
 msgid "Full name"
-msgstr ""
+msgstr "Nom et prénom"
 
 #: .\templates\others\privacy_policy.html:22
 #, fuzzy
@@ -571,37 +599,40 @@ msgstr "Adresse"
 
 #: .\templates\others\privacy_policy.html:23
 msgid "Phone number"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 #: .\templates\others\privacy_policy.html:24
 msgid "Shipping address"
-msgstr ""
+msgstr "Adresse de livraison"
 
 #: .\templates\others\privacy_policy.html:25
 msgid ""
 "Payment information (processed securely via third-party providers like "
 "Stripe; we do not store this information)"
 msgstr ""
+"Informations de paiement (traitées en toute sécurité via des fournisseurs "
+"tiers comme Stripe ; nous ne stockons pas ces informations)"
 
 #: .\templates\others\privacy_policy.html:28
 msgid "How We Use Your Information"
-msgstr ""
+msgstr "Comment nous utilisons vos informations"
 
 #: .\templates\others\privacy_policy.html:30
 msgid "Process and ship your orders"
-msgstr ""
+msgstr "Traiter et expédier vos commandes"
 
 #: .\templates\others\privacy_policy.html:31
 msgid "Communicate with you regarding your purchases"
-msgstr ""
+msgstr "Communiquer avec vous concernant vos achats"
 
 #: .\templates\others\privacy_policy.html:32
 msgid "Improve our services and user experience"
-msgstr ""
+msgstr "Améliorer nos services et l'expérience utilisateur"
 
 #: .\templates\others\privacy_policy.html:33
 msgid "Send promotional emails (only with your consent)"
 msgstr ""
+"Envoyer des e-mails promotionnels (uniquement avec votre consentement)"
 
 #: .\templates\others\privacy_policy.html:36
 msgid "Data Protection"
@@ -627,8 +658,8 @@ msgstr ""
 
 #: .\templates\others\privacy_policy.html:40
 msgid ""
-"sell, rent, or share your personal information with third parties, except as "
-"needed for payment processing, shipping, or when legally required"
+"sell, rent, or share your personal information with third parties, except as"
+" needed for payment processing, shipping, or when legally required"
 msgstr ""
 
 #: .\templates\others\privacy_policy.html:42
@@ -669,8 +700,8 @@ msgstr ""
 
 #: .\templates\others\privacy_policy.html:56
 msgid ""
-"If you have any questions about this privacy policy, feel free to contact us "
-"at"
+"If you have any questions about this privacy policy, feel free to contact us"
+" at"
 msgstr ""
 
 #: .\templates\others\search_results.html:5
@@ -804,8 +835,8 @@ msgstr ""
 
 #: .\templates\others\terms.html:46
 msgid ""
-"We are not liable for any indirect or consequential damages arising from the "
-"use of our site or products"
+"We are not liable for any indirect or consequential damages arising from the"
+" use of our site or products"
 msgstr ""
 
 #: .\templates\others\terms.html:48
@@ -826,29 +857,33 @@ msgstr ""
 msgid "If you have any questions, please contact us at"
 msgstr ""
 
-#: .\templates\payment\canceled.html:2
+#: .\templates\payment\canceled.html:4
 #, fuzzy
 #| msgid "canceled/"
 msgid "Payment canceled"
 msgstr "annulé/"
 
-#: .\templates\payment\canceled.html:5
+#: .\templates\payment\canceled.html:12
 msgid "Your payment has not been processed"
 msgstr ""
 
-#: .\templates\payment\canceled.html:6
+#: .\templates\payment\canceled.html:13
 msgid "There was a problem processing your payment"
 msgstr ""
 
-#: .\templates\payment\completed.html:3
+#: .\templates\payment\canceled.html:15
+msgid "Try Again"
+msgstr ""
+
+#: .\templates\payment\completed.html:4
 msgid "Payment successful"
 msgstr ""
 
-#: .\templates\payment\completed.html:6
+#: .\templates\payment\completed.html:12
 msgid "Your payment was successful"
 msgstr ""
 
-#: .\templates\payment\completed.html:7
+#: .\templates\payment\completed.html:13
 msgid "Your payment has been processed successfully"
 msgstr ""
 
@@ -862,89 +897,108 @@ msgstr "Votre commande"
 msgid "Order summary"
 msgstr ""
 
-#: .\templates\payment\process.html:14
+#: .\templates\payment\process.html:15
 msgid "Image"
 msgstr ""
 
-#: .\templates\payment\process.html:48
+#: .\templates\payment\process.html:16
+#, fuzzy
+#| msgid "Last Name"
+msgid "Name"
+msgstr "Nom de famille"
+
+#: .\templates\payment\process.html:19
+#, fuzzy
+#| msgid "Total"
+msgid "Total (incl. tax)"
+msgstr "Totale"
+
+#: .\templates\payment\process.html:61
 msgid "Pay Now"
 msgstr ""
 
-#: .\templates\shop\product\categories.html:6
-#, fuzzy
-#| msgid "Category"
-msgid "Shop By Category"
-msgstr "Catégorie"
-
-#: .\templates\shop\product\categories.html:12
+#: .\templates\shop\product\categories.html:3
 #, fuzzy
 #| msgid "Category"
 msgid "Shop by Category"
 msgstr "Catégorie"
 
-#: .\templates\shop\product\detail.html:54
+#: .\templates\shop\product\detail.html:92
 msgid "Available Stock"
 msgstr "Stocks disponibles"
 
-#: .\templates\shop\product\detail.html:61
+#: .\templates\shop\product\detail.html:98
+#: .\templates\shop\product\detail.html:121
 msgid "Add to Cart"
 msgstr "Ajouter au panier"
 
-#: .\templates\shop\product\detail.html:65
+#: .\templates\shop\product\detail.html:127
 msgid "login for more!"
 msgstr ""
 
-#: .\templates\shop\product\detail.html:70
+#: .\templates\shop\product\detail.html:131
 msgid "Product Description"
 msgstr "Description du produit"
 
-#: .\templates\shop\product\detail.html:75
+#: .\templates\shop\product\detail.html:136
 msgid "Category"
 msgstr "Catégorie"
 
-#: .\templates\shop\product\detail.html:86
-msgid "You might also like:"
-msgstr ""
-
-#: .\templates\shop\product\detail.html:106
-msgid "No similar product"
-msgstr ""
-
-#: .\templates\shop\product\list.html:6
+#: .\templates\shop\product\list.html:27
 msgid "Products"
 msgstr "Produits"
 
-#: .\templates\shop\product\list.html:13
+#: .\templates\shop\product\list.html:35
 msgid "Discover Your Style"
 msgstr "Découvrez votre style"
 
-#: .\templates\shop\product\list.html:14
+#: .\templates\shop\product\list.html:36
 msgid ""
 "Explore our curated collection of fashion-forward pieces that reflect your "
 "unique personality"
 msgstr ""
-"Découvrez notre collection organisée de pièces avant-gardistes qui reflètent "
-"votre personnalité unique"
+"Découvrez notre collection organisée de pièces avant-gardistes qui reflètent"
+" votre personnalité unique"
 
-#: .\templates\shop\product\list.html:19
+#: .\templates\shop\product\list.html:43
 msgid "Featured Products"
 msgstr "Produits en vedette"
 
-#: .\templates\shop\product\list.html:39
+#: .\templates\shop\product\list.html:65
 msgid "no product yet"
 msgstr "pas encore de produit"
 
-#: .\templates\shop\product\list.html:46
+#: .\templates\shop\product\list.html:71
 msgid "New Arrivals"
 msgstr ""
 
-#: .\templates\shop\product\list.html:58
+#: .\templates\shop\product\list.html:82
 msgid "New"
 msgstr ""
 
-#: .\templates\shop\product\list.html:78
+#: .\templates\shop\product\list.html:98
 msgid "No new arrivals yet."
 msgstr ""
+
+#, fuzzy
+#~ msgid "quantity"
+#~ msgstr "Quantité"
+
+#, fuzzy
+#~ msgid "Total price"
+#~ msgstr "Totale"
+
+#, fuzzy
+#~ msgid "mail"
+#~ msgstr "E-mail"
+
+#, fuzzy
+#~ msgid "Phone "
+#~ msgstr "Téléphone"
+
+#, fuzzy
+#~ msgid "Shop By Category"
+#~ msgstr "Catégorie"
 
 #~ msgid "My Shop"
 #~ msgstr "Ma boutique"
